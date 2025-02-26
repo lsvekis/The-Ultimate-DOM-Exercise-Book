@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag to Move</title>
+  <style>
+    #draggable {
+      width: 100px;
+      height: 100px;
+      background: coral;
+      position: absolute;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div id="draggable">Drag me!</div>
+  <script>
+    const draggable = document.getElementById('draggable');
+    let offsetX, offsetY, isDragging = false;
+    draggable.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      offsetX = e.clientX - draggable.offsetLeft;
+      offsetY = e.clientY - draggable.offsetTop;
+    });
+    document.addEventListener('mousemove', function(e) {
+      if (isDragging) {
+        draggable.style.left = (e.clientX - offsetX) + 'px';
+        draggable.style.top = (e.clientY - offsetY) + 'px';
+      }
+    });
+    document.addEventListener('mouseup', function() {
+      isDragging = false;
+    });
+  </script>
+</body>
+</html>

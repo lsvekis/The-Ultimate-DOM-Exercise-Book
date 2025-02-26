@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animate Scroll to Section</title>
+  <style>
+    #targetSection { height: 600px; background: #f2f2f2; padding: 20px; }
+  </style>
+</head>
+<body>
+  <button id="scrollBtn">Go to Section</button>
+  <div style="height:1000px;">Scroll down...</div>
+  <section id="targetSection">
+    <h2>Target Section</h2>
+  </section>
+  <script>
+    document.getElementById('scrollBtn').addEventListener('click', () => {
+      document.getElementById('targetSection').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

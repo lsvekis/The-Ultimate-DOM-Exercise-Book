@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Active Link on Scroll</title>
+  <style>
+    nav a { padding: 10px; display: inline-block; text-decoration: none; }
+    nav a.active { color: red; }
+    section { height: 600px; padding: 20px; }
+  </style>
+</head>
+<body>
+  <nav id="navLinks">
+    <a href="#section1" class="link">Section 1</a>
+    <a href="#section2" class="link">Section 2</a>
+    <a href="#section3" class="link">Section 3</a>
+  </nav>
+  <section id="section1" style="background: #f8b400;">Section 1</section>
+  <section id="section2" style="background: #6ab04c;">Section 2</section>
+  <section id="section3" style="background: #eb4d4b;">Section 3</section>
+  <script>
+    const links = document.querySelectorAll('.link');
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 70;
+      links.forEach(link => {
+        let section = document.querySelector(link.getAttribute('href'));
+        if (section.offsetTop <= fromTop && (section.offsetTop + section.offsetHeight) > fromTop) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

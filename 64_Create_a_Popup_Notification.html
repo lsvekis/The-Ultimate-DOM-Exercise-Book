@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popup Notification</title>
+  <style>
+    #popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="notifyBtn">Show Notification</button>
+  <div id="popup">This is a popup notification!</div>
+  <script>
+    document.getElementById('notifyBtn').addEventListener('click', () => {
+      document.getElementById('popup').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

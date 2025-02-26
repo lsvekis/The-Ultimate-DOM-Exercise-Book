@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag-and-Drop List</title>
+  <style>
+    #dragList { list-style: none; padding: 0; }
+    #dragList li { padding: 10px; margin: 5px; background: #f2f2f2; border: 1px solid #ccc; cursor: move; }
+  </style>
+</head>
+<body>
+  <ul id="dragList">
+    <li draggable="true">Item 1</li>
+    <li draggable="true">Item 2</li>
+    <li draggable="true">Item 3</li>
+  </ul>
+  <script>
+    let draggedItem;
+    const listItems = document.querySelectorAll('#dragList li');
+    listItems.forEach(item => {
+      item.addEventListener('dragstart', function() {
+        draggedItem = this;
+      });
+      item.addEventListener('dragover', function(e) {
+        e.preventDefault();
+      });
+      item.addEventListener('drop', function(e) {
+        e.preventDefault();
+        const parent = this.parentNode;
+        parent.insertBefore(draggedItem, this.nextSibling);
+      });
+    });
+  </script>
+</body>
+</html>

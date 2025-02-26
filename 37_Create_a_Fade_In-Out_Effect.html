@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fade In/Out Effect</title>
+  <style>
+    #fadeDiv {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+    #fadeDiv.hidden {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="fadeDiv">Fade me!</div>
+  <button id="fadeBtn">Toggle Fade</button>
+  <script>
+    document.getElementById('fadeBtn').addEventListener('click', () => {
+      document.getElementById('fadeDiv').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

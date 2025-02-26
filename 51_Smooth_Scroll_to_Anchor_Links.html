@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smooth Scroll to Anchors</title>
+  <style>
+    section { height: 600px; padding: 20px; }
+    nav a { margin: 0 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#section1">Section 1</a>
+    <a href="#section2">Section 2</a>
+  </nav>
+  <section id="section1" style="background-color: lightcoral;">Section 1</section>
+  <section id="section2" style="background-color: lightblue;">Section 2</section>
+  <script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

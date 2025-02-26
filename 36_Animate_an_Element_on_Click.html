@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animate Element</title>
+  <style>
+    #animateDiv {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+      transition: transform 0.5s;
+    }
+    #animateDiv.animate {
+      transform: scale(1.5);
+    }
+  </style>
+</head>
+<body>
+  <div id="animateDiv"></div>
+  <button id="animateBtn">Animate</button>
+  <script>
+    const animateDiv = document.getElementById('animateDiv');
+    document.getElementById('animateBtn').addEventListener('click', function() {
+      animateDiv.classList.toggle('animate');
+    });
+  </script>
+</body>
+</html>

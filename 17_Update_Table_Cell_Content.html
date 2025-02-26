@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Table Cell</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+  </style>
+</head>
+<body>
+  <table id="dataTable">
+    <tr>
+      <td id="cell1">Old Content</td>
+    </tr>
+  </table>
+  <button id="updateCellBtn">Update Cell Content</button>
+  <script>
+    document.getElementById('updateCellBtn').addEventListener('click', () => {
+      const cell = document.getElementById('cell1');
+      cell.textContent = 'New Updated Content';
+    });
+  </script>
+</body>
+</html>

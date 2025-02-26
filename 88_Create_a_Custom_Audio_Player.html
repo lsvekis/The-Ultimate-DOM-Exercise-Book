@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Audio Player</title>
+  <style>
+    audio { width: 300px; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <audio id="myAudio" src="https://www.w3schools.com/html/horse.mp3"></audio>
+  <br>
+  <button id="audioPlay">Play</button>
+  <button id="audioPause">Pause</button>
+  <script>
+    const audio = document.getElementById('myAudio');
+    document.getElementById('audioPlay').addEventListener('click', () => audio.play());
+    document.getElementById('audioPause').addEventListener('click', () => audio.pause());
+  </script>
+</body>
+</html>

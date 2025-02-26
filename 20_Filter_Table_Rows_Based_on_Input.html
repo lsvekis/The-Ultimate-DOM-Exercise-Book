@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filter Table Rows</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+  </style>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search table...">
+  <table id="dataTable">
+    <tr>
+      <td>Alice</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Charlie</td>
+      <td>35</td>
+    </tr>
+  </table>
+  <script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#dataTable tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

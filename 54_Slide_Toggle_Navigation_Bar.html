@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide Toggle Navigation Bar</title>
+  <style>
+    #navBar {
+      background: #333;
+      color: #fff;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease-out;
+    }
+    #navBar.active { max-height: 200px; }
+    #navBar a { color: white; display: block; padding: 10px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <button id="navToggleBtn">Toggle Navigation</button>
+  <div id="navBar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+  <script>
+    document.getElementById('navToggleBtn').addEventListener('click', () => {
+      document.getElementById('navBar').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Search Match</title>
+  <style>
+    .highlight { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search...">
+  <ul id="fruitList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+  </ul>
+  <script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const term = this.value;
+      const regex = new RegExp(`(${term})`, 'gi');
+      document.querySelectorAll('#fruitList li').forEach(item => {
+        const text = item.textContent;
+        item.innerHTML = term ? text.replace(regex, '<span class="highlight">$1</span>') : text;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Seek</title>
+  <style>
+    #progressContainer {
+      width: 300px;
+      height: 10px;
+      background: #eee;
+      cursor: pointer;
+      position: relative;
+    }
+    #seekFill {
+      height: 100%;
+      background: #3498db;
+      width: 0;
+    }
+  </style>
+</head>
+<body>
+  <audio id="audioSeek" src="https://www.w3schools.com/html/horse.mp3"></audio>
+  <button onclick="document.getElementById('audioSeek').play()">Play</button>
+  <div id="progressContainer">
+    <div id="seekFill"></div>
+  </div>
+  <script>
+    const audioSeek = document.getElementById('audioSeek');
+    const progressContainer = document.getElementById('progressContainer');
+    const seekFill = document.getElementById('seekFill');
+    
+    audioSeek.addEventListener('timeupdate', () => {
+      const percentage = (audioSeek.currentTime / audioSeek.duration) * 100;
+      seekFill.style.width = percentage + '%';
+    });
+    
+    progressContainer.addEventListener('click', (e) => {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const newTime = (clickX / rect.width) * audioSeek.duration;
+      audioSeek.currentTime = newTime;
+    });
+  </script>
+</body>
+</html>

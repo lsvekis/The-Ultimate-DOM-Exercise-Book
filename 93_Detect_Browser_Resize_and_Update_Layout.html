@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resize Detection</title>
+  <style>
+    #resizeBox {
+      width: 100%;
+      background: lightblue;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="resizeBox">Resize the browser window.</div>
+  <script>
+    window.addEventListener('resize', () => {
+      const box = document.getElementById('resizeBox');
+      box.textContent = `Width: ${window.innerWidth}px, Height: ${window.innerHeight}px`;
+    });
+  </script>
+</body>
+</html>

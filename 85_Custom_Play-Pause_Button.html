@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Play/Pause</title>
+  <style>
+    video { width: 400px; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <video id="customVideo" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+  <br>
+  <button id="togglePlay">Play</button>
+  <script>
+    const videoCustom = document.getElementById('customVideo');
+    const toggleBtn = document.getElementById('togglePlay');
+    toggleBtn.addEventListener('click', () => {
+      if (videoCustom.paused) {
+        videoCustom.play();
+        toggleBtn.textContent = 'Pause';
+      } else {
+        videoCustom.pause();
+        toggleBtn.textContent = 'Play';
+      }
+    });
+  </script>
+</body>
+</html>

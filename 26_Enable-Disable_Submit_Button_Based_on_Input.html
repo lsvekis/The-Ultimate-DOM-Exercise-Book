@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enable/Disable Button</title>
+</head>
+<body>
+  <input type="text" id="textInput" placeholder="Type something...">
+  <button id="submitBtn" disabled>Submit</button>
+  <script>
+    const input = document.getElementById('textInput');
+    const button = document.getElementById('submitBtn');
+    input.addEventListener('input', function() {
+      button.disabled = this.value.trim() === '';
+    });
+  </script>
+</body>
+</html>

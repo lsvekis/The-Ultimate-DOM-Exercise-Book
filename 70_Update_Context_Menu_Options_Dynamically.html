@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Context Menu</title>
+  <style>
+    #dynamicMenu {
+      display: none;
+      position: absolute;
+      background: #fff;
+      border: 1px solid #ccc;
+      z-index: 1000;
+      list-style: none;
+      padding: 0;
+    }
+    #dynamicMenu li {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    #dynamicMenu li:hover { background: #eee; }
+  </style>
+</head>
+<body>
+  <p id="textPara">Right-click this text for custom options.</p>
+  <ul id="dynamicMenu"></ul>
+  <script>
+    const dynamicMenu = document.getElementById('dynamicMenu');
+    const textPara = document.getElementById('textPara');
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      if (e.target === textPara) {
+        dynamicMenu.innerHTML = `
+          <li>Copy Text</li>
+          <li>Highlight Text</li>
+        `;
+      } else {
+        dynamicMenu.innerHTML = `<li>Default Option</li>`;
+      }
+      dynamicMenu.style.display = 'block';
+      dynamicMenu.style.left = e.pageX + 'px';
+      dynamicMenu.style.top = e.pageY + 'px';
+    });
+    document.addEventListener('click', () => {
+      dynamicMenu.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

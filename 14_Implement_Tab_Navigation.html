@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Navigation</title>
+  <style>
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .tab { cursor: pointer; padding: 10px; border: 1px solid #ccc; display: inline-block; }
+    .tab.active { background-color: #eee; }
+  </style>
+</head>
+<body>
+  <div id="tabs">
+    <div class="tab active" data-tab="1">Tab 1</div>
+    <div class="tab" data-tab="2">Tab 2</div>
+    <div class="tab" data-tab="3">Tab 3</div>
+  </div>
+  <div id="contents">
+    <div class="tab-content active" data-content="1">
+      <p>This is content for Tab 1.</p>
+    </div>
+    <div class="tab-content" data-content="2">
+      <p>This is content for Tab 2.</p>
+    </div>
+    <div class="tab-content" data-content="3">
+      <p>This is content for Tab 3.</p>
+    </div>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabNumber = tab.getAttribute('data-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelector(`.tab-content[data-content="${tabNumber}"]`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

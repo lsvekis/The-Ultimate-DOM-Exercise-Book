@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Full Image Modal</title>
+  <style>
+    .thumbnail { width: 100px; cursor: pointer; margin: 5px; }
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    #modal img { max-width: 90%; max-height: 90%; }
+  </style>
+</head>
+<body>
+  <img class="thumbnail" src="https://via.placeholder.com/100?text=Image1" data-large="https://via.placeholder.com/600?text=Image1" alt="Thumbnail">
+  <img class="thumbnail" src="https://via.placeholder.com/100?text=Image2" data-large="https://via.placeholder.com/600?text=Image2" alt="Thumbnail">
+  <div id="modal">
+    <img id="modalImage" src="" alt="Full Image">
+  </div>
+  <script>
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        const modal = document.getElementById('modal');
+        document.getElementById('modalImage').src = this.getAttribute('data-large');
+        modal.style.display = 'flex';
+      });
+    });
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target.id !== 'modalImage') {
+        this.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

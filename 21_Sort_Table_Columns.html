@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Table Columns</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+    th { cursor: pointer; background: #f9f9f9; }
+  </style>
+</head>
+<body>
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th data-type="string">Name</th>
+        <th data-type="number">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alice</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>Bob</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Charlie</td>
+        <td>35</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    document.querySelectorAll('th').forEach(header => {
+      header.addEventListener('click', () => {
+        const table = header.closest('table');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const index = Array.from(header.parentNode.children).indexOf(header);
+        const type = header.getAttribute('data-type');
+        rows.sort((a, b) => {
+          let cellA = a.children[index].textContent;
+          let cellB = b.children[index].textContent;
+          if (type === 'number') {
+            return Number(cellA) - Number(cellB);
+          } else {
+            return cellA.localeCompare(cellB);
+          }
+        });
+        rows.forEach(row => tbody.appendChild(row));
+      });
+    });
+  </script>
+</body>
+</html>

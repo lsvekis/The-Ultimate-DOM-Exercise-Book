@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display Selected Option</title>
+</head>
+<body>
+  <select id="mySelect">
+    <option value="">Select an option</option>
+    <option value="Option 1">Option 1</option>
+    <option value="Option 2">Option 2</option>
+    <option value="Option 3">Option 3</option>
+  </select>
+  <p>You selected: <span id="selectedOption">None</span></p>
+  <script>
+    const select = document.getElementById('mySelect');
+    const display = document.getElementById('selectedOption');
+    select.addEventListener('change', function() {
+      display.textContent = this.value || 'None';
+    });
+  </script>
+</body>
+</html>

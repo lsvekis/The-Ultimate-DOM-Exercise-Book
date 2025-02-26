@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infinite Scrolling</title>
+  <style>
+    #infiniteContent { max-width: 600px; margin: auto; }
+    .post { padding: 20px; border: 1px solid #ccc; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <div id="infiniteContent">
+    <!-- Initial posts -->
+    <div class="post">Post 1</div>
+    <div class="post">Post 2</div>
+    <div class="post">Post 3</div>
+  </div>
+  <script>
+    window.addEventListener('scroll', () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+        loadMorePosts();
+      }
+    });
+    function loadMorePosts() {
+      const content = document.getElementById('infiniteContent');
+      for (let i = 0; i < 3; i++) {
+        const post = document.createElement('div');
+        post.className = 'post';
+        post.textContent = 'New Post Loaded';
+        content.appendChild(post);
+      }
+    }
+  </script>
+</body>
+</html>

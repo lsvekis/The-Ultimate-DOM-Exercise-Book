@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Table</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+  </style>
+</head>
+<body>
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be added here dynamically -->
+    </tbody>
+  </table>
+  <script>
+    const data = [
+      { name: 'Alice', age: 25 },
+      { name: 'Bob', age: 30 },
+      { name: 'Charlie', age: 35 }
+    ];
+    const tbody = document.querySelector('#dataTable tbody');
+    data.forEach(item => {
+      const row = document.createElement('tr');
+      const nameCell = document.createElement('td');
+      nameCell.textContent = item.name;
+      const ageCell = document.createElement('td');
+      ageCell.textContent = item.age;
+      row.appendChild(nameCell);
+      row.appendChild(ageCell);
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

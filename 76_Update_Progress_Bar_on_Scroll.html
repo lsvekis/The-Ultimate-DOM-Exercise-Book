@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Progress Bar</title>
+  <style>
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: #3498db;
+      width: 0;
+      z-index: 100;
+    }
+    .content { height: 2000px; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div id="scrollProgress"></div>
+  <div class="content">Scroll to see the progress bar update.</div>
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrolled = (scrollTop / docHeight) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+  </script>
+</body>
+</html>

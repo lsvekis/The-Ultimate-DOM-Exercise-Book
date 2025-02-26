@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Searchable List</title>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search items...">
+  <ul id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Orange</li>
+    <li>Mango</li>
+  </ul>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const items = document.querySelectorAll('#itemList li');
+    searchInput.addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      items.forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(filter) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

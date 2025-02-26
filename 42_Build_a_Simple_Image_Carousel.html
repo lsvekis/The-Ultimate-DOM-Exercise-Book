@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Carousel</title>
+  <style>
+    #carousel { width: 300px; height: 200px; overflow: hidden; }
+    #carousel img { width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <div id="carousel">
+    <img id="carouselImage" src="https://via.placeholder.com/300x200?text=1" alt="Carousel Image">
+  </div>
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+  <script>
+    const images = [
+      'https://via.placeholder.com/300x200?text=1',
+      'https://via.placeholder.com/300x200?text=2',
+      'https://via.placeholder.com/300x200?text=3'
+    ];
+    let currentIndex = 0;
+    const carouselImage = document.getElementById('carouselImage');
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      carouselImage.src = images[currentIndex];
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      carouselImage.src = images[currentIndex];
+    });
+  </script>
+</body>
+</html>

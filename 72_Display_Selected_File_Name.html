@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display File Name</title>
+</head>
+<body>
+  <button id="uploadBtn">Choose File</button>
+  <input type="file" id="fileInput" style="display:none;">
+  <p>Selected File: <span id="fileName">None</span></p>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileName');
+    document.getElementById('uploadBtn').addEventListener('click', () => {
+      fileInput.click();
+    });
+    fileInput.addEventListener('change', function() {
+      fileNameDisplay.textContent = this.files.length ? this.files[0].name : 'None';
+    });
+  </script>
+</body>
+</html>

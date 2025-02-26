@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Fullscreen on Click</title>
+  <style>
+    #clickFullscreen { width: 400px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <img id="clickFullscreen" src="https://via.placeholder.com/400x300?text=Click+for+Fullscreen" alt="Image">
+  <script>
+    const img = document.getElementById('clickFullscreen');
+    img.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        img.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toggle Time Format</title>
+</head>
+<body>
+  <h1 id="clock">00:00:00</h1>
+  <button id="toggleFormatBtn">Toggle Format</button>
+  <script>
+    let is24Hour = true;
+    function updateClock() {
+      const now = new Date();
+      let timeString;
+      if (is24Hour) {
+        timeString = now.toLocaleTimeString('en-GB');
+      } else {
+        timeString = now.toLocaleTimeString('en-US');
+      }
+      document.getElementById('clock').textContent = timeString;
+    }
+    document.getElementById('toggleFormatBtn').addEventListener('click', function() {
+      is24Hour = !is24Hour;
+    });
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Searched Text</title>
+  <style>
+    .highlight { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <input type="text" id="searchTerm" placeholder="Search...">
+  <ul id="colorList">
+    <li>Red</li>
+    <li>Green</li>
+    <li>Blue</li>
+    <li>Yellow</li>
+  </ul>
+  <script>
+    document.getElementById('searchTerm').addEventListener('input', function() {
+      const term = this.value;
+      const regex = new RegExp(`(${term})`, 'gi');
+      const items = document.querySelectorAll('#colorList li');
+      items.forEach(item => {
+        const text = item.textContent;
+        item.innerHTML = term ? text.replace(regex, '<span class="highlight">$1</span>') : text;
+      });
+    });
+  </script>
+</body>
+</html>

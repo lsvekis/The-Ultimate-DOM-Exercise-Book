@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Tooltip on Hover</title>
+  <style>
+    #tooltipTarget { padding: 10px; border: 1px solid #ccc; display: inline-block; }
+    #tooltip { position: absolute; background: #333; color: #fff; padding: 5px; border-radius: 3px; display: none; }
+  </style>
+</head>
+<body>
+  <div id="tooltipTarget">Hover over me</div>
+  <div id="tooltip">Tooltip Text</div>
+  <script>
+    const target = document.getElementById('tooltipTarget');
+    const tooltip = document.getElementById('tooltip');
+    target.addEventListener('mouseover', (e) => {
+      tooltip.style.display = 'block';
+      tooltip.style.left = e.pageX + 'px';
+      tooltip.style.top = (e.pageY + 20) + 'px';
+    });
+    target.addEventListener('mouseout', () => {
+      tooltip.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

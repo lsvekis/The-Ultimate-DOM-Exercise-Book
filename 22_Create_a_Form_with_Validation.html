@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <style>
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <form id="myForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username">
+    <span id="errorMsg" class="error"></span>
+    <br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      const username = document.getElementById('username').value;
+      const errorMsg = document.getElementById('errorMsg');
+      if (!username.trim()) {
+        e.preventDefault();
+        errorMsg.textContent = 'Username is required.';
+      } else {
+        errorMsg.textContent = '';
+      }
+    });
+  </script>
+</body>
+</html>

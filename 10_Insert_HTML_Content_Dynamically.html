@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert HTML Dynamically</title>
+</head>
+<body>
+  <div id="contentContainer">
+    <p>Original content.</p>
+  </div>
+  <button id="insertHtmlBtn">Insert HTML</button>
+  <script>
+    document.getElementById('insertHtmlBtn').addEventListener('click', () => {
+      const htmlContent = `
+        <h2>Dynamically Added Heading</h2>
+        <p>This content was inserted using innerHTML.</p>
+      `;
+      document.getElementById('contentContainer').innerHTML += htmlContent;
+    });
+  </script>
+</body>
+</html>

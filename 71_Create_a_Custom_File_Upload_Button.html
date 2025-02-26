@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom File Upload</title>
+  <style>
+    #fileInput { display: none; }
+    #customButton {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <button id="customButton">Upload File</button>
+  <input type="file" id="fileInput">
+  <script>
+    document.getElementById('customButton').addEventListener('click', () => {
+      document.getElementById('fileInput').click();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accordion Menu</title>
+  <style>
+    .accordion-section { border: 1px solid #ccc; margin-bottom: 5px; }
+    .accordion-header { padding: 10px; cursor: pointer; background: #f1f1f1; }
+    .accordion-content { display: none; padding: 10px; }
+    .accordion-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="accordion-section">
+    <div class="accordion-header">Section 1</div>
+    <div class="accordion-content">Content for section 1.</div>
+  </div>
+  <div class="accordion-section">
+    <div class="accordion-header">Section 2</div>
+    <div class="accordion-content">Content for section 2.</div>
+  </div>
+  <div class="accordion-section">
+    <div class="accordion-header">Section 3</div>
+    <div class="accordion-content">Content for section 3.</div>
+  </div>
+  <script>
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        content.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

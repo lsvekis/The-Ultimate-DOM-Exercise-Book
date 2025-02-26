@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Spy Navigation</title>
+  <style>
+    body { position: relative; }
+    nav a { padding: 10px; display: inline-block; text-decoration: none; }
+    nav a.active { background: #ddd; }
+    section { height: 600px; padding: 20px; }
+  </style>
+</head>
+<body>
+  <nav id="spyNav">
+    <a href="#sec1" class="spy-link">Section 1</a>
+    <a href="#sec2" class="spy-link">Section 2</a>
+    <a href="#sec3" class="spy-link">Section 3</a>
+  </nav>
+  <section id="sec1" style="background: lightcoral;">Section 1</section>
+  <section id="sec2" style="background: lightblue;">Section 2</section>
+  <section id="sec3" style="background: lightgreen;">Section 3</section>
+  <script>
+    const spyLinks = document.querySelectorAll('.spy-link');
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current;
+      sections.forEach(section => {
+        if (pageYOffset >= section.offsetTop - 60) {
+          current = section.getAttribute('id');
+        }
+      });
+      spyLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href').substring(1) === current);
+      });
+    });
+  </script>
+</body>
+</html>

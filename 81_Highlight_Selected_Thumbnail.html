@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Thumbnail</title>
+  <style>
+    .thumbnail { width: 100px; cursor: pointer; margin: 5px; border: 2px solid transparent; }
+    .thumbnail.selected { border-color: red; }
+    #mainImage { width: 300px; height: 200px; display: block; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <img id="mainImage" src="https://via.placeholder.com/300x200?text=Image1" alt="Main Image">
+  <div>
+    <img class="thumbnail selected" src="https://via.placeholder.com/100?text=Image1" data-large="https://via.placeholder.com/300x200?text=Image1" alt="Thumbnail 1">
+    <img class="thumbnail" src="https://via.placeholder.com/100?text=Image2" data-large="https://via.placeholder.com/300x200?text=Image2" alt="Thumbnail 2">
+    <img class="thumbnail" src="https://via.placeholder.com/100?text=Image3" data-large="https://via.placeholder.com/300x200?text=Image3" alt="Thumbnail 3">
+  </div>
+  <script>
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        document.getElementById('mainImage').src = this.getAttribute('data-large');
+        thumbnails.forEach(t => t.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Input Border on Focus</title>
+  <style>
+    input { border: 2px solid #ccc; padding: 5px; }
+  </style>
+</head>
+<body>
+  <input type="text" id="myInput" placeholder="Focus me">
+  <script>
+    const input = document.getElementById('myInput');
+    input.addEventListener('focus', function() {
+      this.style.borderColor = 'green';
+    });
+    input.addEventListener('blur', function() {
+      this.style.borderColor = '#ccc';
+    });
+  </script>
+</body>
+</html>

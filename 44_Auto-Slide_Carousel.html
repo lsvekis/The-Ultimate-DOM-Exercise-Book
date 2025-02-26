@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto-Slide Carousel</title>
+  <style>
+    #autoCarousel { width: 300px; height: 200px; overflow: hidden; }
+    #autoCarousel img { width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <div id="autoCarousel">
+    <img id="autoCarouselImage" src="https://via.placeholder.com/300x200?text=1" alt="Carousel">
+  </div>
+  <script>
+    const autoImages = [
+      'https://via.placeholder.com/300x200?text=1',
+      'https://via.placeholder.com/300x200?text=2',
+      'https://via.placeholder.com/300x200?text=3'
+    ];
+    let autoIndex = 0;
+    const autoImage = document.getElementById('autoCarouselImage');
+    setInterval(() => {
+      autoIndex = (autoIndex + 1) % autoImages.length;
+      autoImage.src = autoImages[autoIndex];
+    }, 3000);
+  </script>
+</body>
+</html>

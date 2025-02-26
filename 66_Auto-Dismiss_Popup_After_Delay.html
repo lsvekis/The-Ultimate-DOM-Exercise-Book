@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto-Dismiss Popup</title>
+  <style>
+    #popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="showPopupBtn">Show Popup</button>
+  <div id="popup">This popup will close automatically.</div>
+  <script>
+    document.getElementById('showPopupBtn').addEventListener('click', () => {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'block';
+      setTimeout(() => { popup.style.display = 'none'; }, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide Toggle Effect</title>
+  <style>
+    #slideDiv {
+      background: #e0e0e0;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease-out;
+    }
+    #slideDiv.active {
+      max-height: 200px; /* Adjust based on content */
+    }
+  </style>
+</head>
+<body>
+  <button id="slideToggleBtn">Slide Toggle</button>
+  <div id="slideDiv">
+    <p>This content slides down and up when toggled.</p>
+  </div>
+  <script>
+    document.getElementById('slideToggleBtn').addEventListener('click', function() {
+      document.getElementById('slideDiv').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

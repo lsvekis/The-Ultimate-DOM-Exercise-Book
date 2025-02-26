@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Error Messages</title>
+  <style>
+    .error { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <form id="myForm">
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" id="email">
+      <div id="emailError" class="error"></div>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      if (!emailInput.value.includes('@')) {
+        e.preventDefault();
+        emailError.textContent = 'Please enter a valid email.';
+      } else {
+        emailError.textContent = '';
+      }
+    });
+  </script>
+</body>
+</html>

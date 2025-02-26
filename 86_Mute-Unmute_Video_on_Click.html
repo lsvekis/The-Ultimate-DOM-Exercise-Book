@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mute/Unmute Video</title>
+  <style>
+    video { width: 400px; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <video id="muteVideo" src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
+  <br>
+  <button id="muteBtn">Mute</button>
+  <script>
+    const videoMute = document.getElementById('muteVideo');
+    const muteBtn = document.getElementById('muteBtn');
+    muteBtn.addEventListener('click', () => {
+      videoMute.muted = !videoMute.muted;
+      muteBtn.textContent = videoMute.muted ? 'Unmute' : 'Mute';
+    });
+  </script>
+</body>
+</html>

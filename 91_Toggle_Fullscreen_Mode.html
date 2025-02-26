@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fullscreen Toggle</title>
+  <style>
+    #fullscreenElement { width: 400px; }
+  </style>
+</head>
+<body>
+  <img id="fullscreenElement" src="https://via.placeholder.com/400x300?text=Image" alt="Image">
+  <br>
+  <button id="fullscreenBtn">Toggle Fullscreen</button>
+  <script>
+    const elem = document.getElementById('fullscreenElement');
+    document.getElementById('fullscreenBtn').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>

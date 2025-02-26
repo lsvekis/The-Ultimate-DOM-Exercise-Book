@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Remove Element by ID</title>
+</head>
+<body>
+  <div id="removable">This div will be removed.</div>
+  <button id="removeBtn">Remove Element</button>
+  <script>
+    document.getElementById('removeBtn').addEventListener('click', () => {
+      const element = document.getElementById('removable');
+      if (element) {
+        element.remove();
+      }
+    });
+  </script>
+</body>
+</html>

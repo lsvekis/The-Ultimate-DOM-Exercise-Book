@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toggle Visibility</title>
+  <style>
+    #toggleContent { padding: 20px; border: 1px solid #ccc; display: none; }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">Toggle Content</button>
+  <div id="toggleContent">This content can be toggled.</div>
+  <script>
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      const content = document.getElementById('toggleContent');
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

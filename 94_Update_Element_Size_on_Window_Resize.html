@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Element Sizing</title>
+  <style>
+    #dynamicBox {
+      background: coral;
+      transition: width 0.3s, height 0.3s;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="dynamicBox">Resize window to change my size.</div>
+  <script>
+    function updateBoxSize() {
+      const box = document.getElementById('dynamicBox');
+      box.style.width = (window.innerWidth * 0.5) + 'px';
+      box.style.height = (window.innerHeight * 0.3) + 'px';
+    }
+    window.addEventListener('resize', updateBoxSize);
+    updateBoxSize();
+  </script>
+</body>
+</html>

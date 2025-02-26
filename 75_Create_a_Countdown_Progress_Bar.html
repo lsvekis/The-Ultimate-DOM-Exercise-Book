@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Progress Bar</title>
+  <style>
+    #countdownBar {
+      width: 100%;
+      background: #eee;
+      height: 20px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    #barFill {
+      background: #3498db;
+      height: 100%;
+      width: 0;
+      transition: width 1s linear;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdownBar"><div id="barFill"></div></div>
+  <div id="timer">10 seconds remaining</div>
+  <script>
+    let timeLeft = 10;
+    const timerDisplay = document.getElementById('timer');
+    const barFill = document.getElementById('barFill');
+    const interval = setInterval(() => {
+      timeLeft--;
+      timerDisplay.textContent = `${timeLeft} seconds remaining`;
+      barFill.style.width = ((10 - timeLeft) / 10 * 100) + '%';
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        timerDisplay.textContent = 'Time is up!';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

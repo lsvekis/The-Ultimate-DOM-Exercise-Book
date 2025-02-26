@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Remove Table Row</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <table id="dataTable">
+    <tr>
+      <td>Row 1</td>
+      <td><button class="deleteBtn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>Row 2</td>
+      <td><button class="deleteBtn">Delete</button></td>
+    </tr>
+  </table>
+  <script>
+    document.querySelectorAll('.deleteBtn').forEach(button => {
+      button.addEventListener('click', function() {
+        const row = this.closest('tr');
+        row.remove();
+      });
+    });
+  </script>
+</body>
+</html>

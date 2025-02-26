@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Volume Control</title>
+  <style>
+    video { width: 400px; }
+  </style>
+</head>
+<body>
+  <video id="volumeVideo" src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
+  <br>
+  <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+  <script>
+    const videoVolume = document.getElementById('volumeVideo');
+    const volumeSlider = document.getElementById('volumeSlider');
+    volumeSlider.addEventListener('input', function() {
+      videoVolume.volume = this.value;
+    });
+  </script>
+</body>
+</html>

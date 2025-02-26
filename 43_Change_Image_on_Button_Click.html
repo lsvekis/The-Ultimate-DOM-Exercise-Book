@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Image Source</title>
+</head>
+<body>
+  <img id="myImage" src="https://via.placeholder.com/300x200?text=Before" alt="Image">
+  <button id="changeImageBtn">Change Image</button>
+  <script>
+    document.getElementById('changeImageBtn').addEventListener('click', function() {
+      document.getElementById('myImage').src = 'https://via.placeholder.com/300x200?text=After';
+    });
+  </script>
+</body>
+</html>

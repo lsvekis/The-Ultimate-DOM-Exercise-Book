@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload Progress</title>
+  <style>
+    #progressBar {
+      width: 0;
+      height: 20px;
+      background: green;
+      transition: width 0.5s;
+    }
+    #progressContainer {
+      width: 100%;
+      background: #eee;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <button id="startUpload">Start Upload</button>
+  <div id="progressContainer">
+    <div id="progressBar"></div>
+  </div>
+  <script>
+    document.getElementById('startUpload').addEventListener('click', () => {
+      let progress = 0;
+      const progressBar = document.getElementById('progressBar');
+      const interval = setInterval(() => {
+        progress += 10;
+        progressBar.style.width = progress + '%';
+        if (progress >= 100) clearInterval(interval);
+      }, 500);
+    });
+  </script>
+</body>
+</html>

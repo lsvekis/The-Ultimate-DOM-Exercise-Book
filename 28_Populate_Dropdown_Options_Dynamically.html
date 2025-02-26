@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Dropdown Options</title>
+</head>
+<body>
+  <select id="mySelect">
+    <option value="">Select an option</option>
+  </select>
+  <script>
+    const options = ['Option 1', 'Option 2', 'Option 3'];
+    const select = document.getElementById('mySelect');
+    options.forEach(optionText => {
+      const option = document.createElement('option');
+      option.value = optionText;
+      option.textContent = optionText;
+      select.appendChild(option);
+    });
+  </script>
+</body>
+</html>

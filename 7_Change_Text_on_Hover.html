@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Text on Hover</title>
+</head>
+<body>
+  <div id="hoverText" style="padding: 20px; border: 1px solid #ccc;">
+    Hover over me!
+  </div>
+  <script>
+    const hoverDiv = document.getElementById('hoverText');
+    hoverDiv.addEventListener('mouseover', function() {
+      this.textContent = 'Thanks for hovering!';
+    });
+    hoverDiv.addEventListener('mouseout', function() {
+      this.textContent = 'Hover over me!';
+    });
+  </script>
+</body>
+</html>

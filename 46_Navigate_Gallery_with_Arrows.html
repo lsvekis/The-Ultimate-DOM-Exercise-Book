@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lightbox Navigation</title>
+  <style>
+    .thumbnail { width: 100px; cursor: pointer; margin: 5px; }
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #lightbox img { max-width: 80%; max-height: 80%; }
+    .nav-btn { cursor: pointer; color: white; font-size: 2em; margin: 10px; }
+  </style>
+</head>
+<body>
+  <div id="gallery">
+    <img class="thumbnail" src="https://via.placeholder.com/100?text=1" alt="1">
+    <img class="thumbnail" src="https://via.placeholder.com/100?text=2" alt="2">
+    <img class="thumbnail" src="https://via.placeholder.com/100?text=3" alt="3">
+  </div>
+  
+  <div id="lightbox">
+    <div>
+      <span id="prevBtn" class="nav-btn">&#10094;</span>
+      <span id="nextBtn" class="nav-btn">&#10095;</span>
+    </div>
+    <img id="lightboxImage" src="" alt="Large Image">
+  </div>
+  <script>
+    const thumbnailsNav = document.querySelectorAll('.thumbnail');
+    const lightboxNav = document.getElementById('lightbox');
+    const lightboxImageNav = document.getElementById('lightboxImage');
+    let currentIndexNav = 0;
+    const imagesNav = Array.from(thumbnailsNav).map(img => img.src.replace('100', '400'));
+    
+    thumbnailsNav.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        currentIndexNav = index;
+        lightboxImageNav.src = imagesNav[currentIndexNav];
+        lightboxNav.style.display = 'flex';
+      });
+    });
+    
+    document.getElementById('prevBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndexNav = (currentIndexNav - 1 + imagesNav.length) % imagesNav.length;
+      lightboxImageNav.src = imagesNav[currentIndexNav];
+    });
+    
+    document.getElementById('nextBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndexNav = (currentIndexNav + 1) % imagesNav.length;
+      lightboxImageNav.src = imagesNav[currentIndexNav];
+    });
+    
+    lightboxNav.addEventListener('click', function(e) {
+      if (e.target.tagName !== 'IMG') {
+        lightboxNav.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

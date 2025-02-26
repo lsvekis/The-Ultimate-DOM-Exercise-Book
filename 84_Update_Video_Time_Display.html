@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Time Display</title>
+  <style>
+    video { width: 400px; }
+  </style>
+</head>
+<body>
+  <video id="videoTime" src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
+  <p>Current Time: <span id="currentTime">0</span> seconds</p>
+  <script>
+    const video = document.getElementById('videoTime');
+    const timeDisplay = document.getElementById('currentTime');
+    video.addEventListener('timeupdate', () => {
+      timeDisplay.textContent = Math.floor(video.currentTime);
+    });
+  </script>
+</body>
+</html>

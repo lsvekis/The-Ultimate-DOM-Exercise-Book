@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create and Append Element</title>
+</head>
+<body>
+  <button id="addDivBtn">Add Div</button>
+  <script>
+    document.getElementById('addDivBtn').addEventListener('click', () => {
+      const newDiv = document.createElement('div');
+      newDiv.textContent = 'This is a dynamically added div!';
+      newDiv.style.padding = '10px';
+      newDiv.style.border = '1px solid black';
+      document.body.appendChild(newDiv);
+    });
+  </script>
+</body>
+</html>
