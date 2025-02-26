@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Filters</title>
+  <style>
+    #image { width: 300px; transition: filter 0.3s; }
+  </style>
+</head>
+<body>
+  <img id="image" src="https://via.placeholder.com/300x200?text=Image" alt="Image">
+  <br>
+  <button onclick="document.getElementById('image').style.filter='sepia(100%)'">Sepia</button>
+  <button onclick="document.getElementById('image').style.filter='invert(100%)'">Invert</button>
+  <button onclick="document.getElementById('image').style.filter='none'">Reset</button>
+</body>
+</html>

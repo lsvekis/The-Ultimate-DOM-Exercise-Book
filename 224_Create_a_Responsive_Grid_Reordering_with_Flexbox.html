@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Flex Grid</title>
+  <style>
+    #grid {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .item {
+      flex: 1 1 100px;
+      margin: 5px;
+      background: #ccc;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="grid">
+    <div class="item" data-order="1">Item 1</div>
+    <div class="item" data-order="2">Item 2</div>
+    <div class="item" data-order="3">Item 3</div>
+    <div class="item" data-order="4">Item 4</div>
+  </div>
+  <script>
+    window.addEventListener('resize', () => {
+      const width = window.innerWidth;
+      document.querySelectorAll('.item').forEach(item => {
+        // Reverse order if width is less than 500px
+        item.style.order = width < 500 ? 5 - item.getAttribute('data-order') : item.getAttribute('data-order');
+      });
+    });
+    window.dispatchEvent(new Event('resize'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Feed</title>
+  <style>
+    .news-item { border-bottom: 1px solid #ccc; padding: 10px 0; }
+  </style>
+</head>
+<body>
+  <div id="newsFeed"></div>
+  <script>
+    const articles = [
+      { title: "Breaking News 1", content: "Content of article 1." },
+      { title: "Breaking News 2", content: "Content of article 2." },
+      { title: "Breaking News 3", content: "Content of article 3." }
+    ];
+    const feed = document.getElementById('newsFeed');
+    articles.forEach(article => {
+      const item = document.createElement('div');
+      item.className = 'news-item';
+      item.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>`;
+      feed.appendChild(item);
+    });
+  </script>
+</body>
+</html>

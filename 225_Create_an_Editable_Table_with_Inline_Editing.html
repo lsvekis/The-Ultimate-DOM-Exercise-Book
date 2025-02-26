@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inline Editable Table</title>
+  <style>
+    td { padding: 10px; border: 1px solid #ccc; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <table id="editableTable">
+    <tr>
+      <td>Item 1</td>
+      <td>Price 1</td>
+    </tr>
+    <tr>
+      <td>Item 2</td>
+      <td>Price 2</td>
+    </tr>
+  </table>
+  <script>
+    document.querySelectorAll('#editableTable td').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.value = this.textContent;
+        this.textContent = '';
+        this.appendChild(input);
+        input.focus();
+        input.addEventListener('blur', () => {
+          this.textContent = input.value;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

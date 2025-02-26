@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Dashboard</title>
+  <style>
+    .chart { width: 100%; background: #eee; height: 20px; margin: 10px 0; position: relative; }
+    .fill { height: 100%; background: #3498db; width: 0; transition: width 0.5s; }
+  </style>
+</head>
+<body>
+  <h2>Survey Dashboard</h2>
+  <div>
+    <p>Option A Votes: <span id="dashVoteA">0</span></p>
+    <div class="chart"><div class="fill" id="dashBarA"></div></div>
+    <p>Option B Votes: <span id="dashVoteB">0</span></p>
+    <div class="chart"><div class="fill" id="dashBarB"></div></div>
+  </div>
+  <button onclick="dashboardVote('A')">Vote Option A</button>
+  <button onclick="dashboardVote('B')">Vote Option B</button>
+  <script>
+    let dashboardVotes = { A: 0, B: 0 };
+    function dashboardVote(option) {
+      dashboardVotes[option]++;
+      const total = dashboardVotes.A + dashboardVotes.B;
+      document.getElementById('dashVoteA').textContent = dashboardVotes.A;
+      document.getElementById('dashVoteB').textContent = dashboardVotes.B;
+      document.getElementById('dashBarA').style.width = (dashboardVotes.A / total * 100) + '%';
+      document.getElementById('dashBarB').style.width = (dashboardVotes.B / total * 100) + '%';
+    }
+  </script>
+</body>
+</html>

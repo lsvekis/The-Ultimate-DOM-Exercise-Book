@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Reader Preview</title>
+</head>
+<body>
+  <input type="file" id="fileInput">
+  <br>
+  <img id="preview" src="" alt="Image Preview" style="max-width:300px; display:none;">
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById('preview');
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Bot Interface</title>
+  <style>
+    #chat { border: 1px solid #ccc; height: 300px; overflow-y: auto; padding: 10px; }
+    .message { margin: 5px 0; }
+    .user { text-align: right; }
+    .bot { text-align: left; color: blue; }
+  </style>
+</head>
+<body>
+  <div id="chat"></div>
+  <input type="text" id="chatInput" placeholder="Type a message...">
+  <button id="sendBtn">Send</button>
+  <script>
+    const chat = document.getElementById('chat');
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const input = document.getElementById('chatInput');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = input.value;
+      chat.appendChild(userMsg);
+      input.value = '';
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'message bot';
+        botMsg.textContent = "This is a simulated response.";
+        chat.appendChild(botMsg);
+        chat.scrollTop = chat.scrollHeight;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

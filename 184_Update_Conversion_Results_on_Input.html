@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Currency Conversion</title>
+</head>
+<body>
+  <label>Amount in USD: <input type="number" id="usdInput" value="1"></label>
+  <p>Equivalent in EUR: <span id="eurOutput">0</span></p>
+  <script>
+    const conversionRate = 0.85;
+    const input = document.getElementById('usdInput');
+    const output = document.getElementById('eurOutput');
+    input.addEventListener('input', () => {
+      output.textContent = (Number(input.value) * conversionRate).toFixed(2);
+    });
+    input.dispatchEvent(new Event('input'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Throttle Scroll Example</title>
+</head>
+<body>
+  <div style="height:2000px; padding:20px;">Scroll down to see throttled scroll events logged in the console.</div>
+  <script>
+    function throttle(func, limit) {
+      let lastFunc;
+      let lastRan;
+      return function() {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function() {
+            if ((Date.now() - lastRan) >= limit) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            }
+          }, limit - (Date.now() - lastRan));
+        }
+      };
+    }
+    window.addEventListener('scroll', throttle(() => {
+      console.log('Throttled scroll event at', new Date().toLocaleTimeString());
+    }, 1000));
+  </script>
+</body>
+</html>

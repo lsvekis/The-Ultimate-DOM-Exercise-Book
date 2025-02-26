@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Progress Tracker</title>
+  <style>
+    #progressContainer { width: 100%; background: #eee; height: 10px; margin-bottom: 10px; }
+    #progressBar { height: 100%; background: green; width: 0%; transition: width 0.5s; }
+  </style>
+</head>
+<body>
+  <div id="progressContainer">
+    <div id="progressBar"></div>
+  </div>
+  <form id="progressForm">
+    <input type="text" placeholder="Field 1" required><br>
+    <input type="text" placeholder="Field 2" required><br>
+    <input type="text" placeholder="Field 3" required><br>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    const inputs = document.querySelectorAll('#progressForm input');
+    const progressBar = document.getElementById('progressBar');
+    inputs.forEach(input => {
+      input.addEventListener('input', updateProgress);
+    });
+    function updateProgress() {
+      const filled = Array.from(inputs).filter(i => i.value.trim() !== '').length;
+      progressBar.style.width = (filled / inputs.length * 100) + '%';
+    }
+  </script>
+</body>
+</html>

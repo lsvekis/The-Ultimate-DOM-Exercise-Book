@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modal with Tabs</title>
+  <style>
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    #modalContent {
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 5px;
+    }
+    .tabs { display: flex; margin-bottom: 10px; }
+    .tab { flex: 1; text-align: center; padding: 5px; cursor: pointer; background: #eee; }
+    .tab.active { background: #ccc; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+  </style>
+</head>
+<body>
+  <button id="openModal">Open Modal</button>
+  <div id="modal">
+    <div id="modalContent">
+      <div class="tabs">
+        <div class="tab active" data-tab="1">Tab 1</div>
+        <div class="tab" data-tab="2">Tab 2</div>
+      </div>
+      <div class="tab-panel active" data-panel="1">
+        <p>Content for Tab 1</p>
+      </div>
+      <div class="tab-panel" data-panel="2">
+        <p>Content for Tab 2</p>
+      </div>
+      <button id="closeModal">Close Modal</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById('openModal').addEventListener('click', () => {
+      document.getElementById('modal').style.display = 'flex';
+    });
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('modal').style.display = 'none';
+    });
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const tabId = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelector(`.tab-panel[data-panel="${tabId}"]`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

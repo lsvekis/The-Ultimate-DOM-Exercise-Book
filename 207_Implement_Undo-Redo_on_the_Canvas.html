@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Undo/Redo</title>
+  <style>
+    #canvas { border: 1px solid #ccc; cursor: crosshair; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="300"></canvas>
+  <br>
+  <button id="undo">Undo</button>
+  <button id="redo">Redo</button>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false, history = [], redoStack = [];
+    
+    function saveState() { history.push(canvas.toDataURL()); }
+    
+    canvas.addEventListener('mousedown', (e) => {
+      drawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+      saveState();
+    });
+    canvas.addEventListener('mousemove', (e) => {
+      if (!drawing) return;
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+    });
+    canvas.addEventListener('mouseup', () => { drawing = false; });
+    
+    document.getElementById('undo').addEventListener('click', () => {
+      if (history.length) {
+        redoStack.push(history.pop());
+        const imgData = history[history.length - 1];
+        const img = new Image();
+        img.onload = () => { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0); }
+        img.src = imgData;
+      }
+    });
+    document.getElementById('redo').addEventListener('click', () => {
+      if (redoStack.length) {
+        const imgData = redoStack.pop();
+        history.push(imgData);
+        const img = new Image();
+        img.onload = () => { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0); }
+        img.src = imgData;
+      }
+    });
+  </script>
+</body>
+</html>

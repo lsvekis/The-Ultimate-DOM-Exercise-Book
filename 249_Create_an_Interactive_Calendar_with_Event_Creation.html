@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Calendar</title>
+  <style>
+    #calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; max-width: 500px; margin: auto; }
+    .day { border: 1px solid #ccc; padding: 10px; min-height: 80px; position: relative; }
+    .event { background: #ffeb3b; padding: 2px 4px; margin-top: 2px; font-size: 0.8em; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="calendar"></div>
+  <script>
+    const calendar = document.getElementById('calendar');
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    for(let i = 1; i <= daysInMonth; i++){
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'day';
+      dayDiv.textContent = i;
+      dayDiv.addEventListener('click', () => {
+        const eventText = prompt("Enter event:");
+        if(eventText){
+          const eventDiv = document.createElement('div');
+          eventDiv.className = 'event';
+          eventDiv.textContent = eventText;
+          eventDiv.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if(confirm("Delete event?")) eventDiv.remove();
+          });
+          dayDiv.appendChild(eventDiv);
+        }
+      });
+      calendar.appendChild(dayDiv);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sticky Note Board</title>
+  <style>
+    #board { position: relative; width: 90%; height: 500px; border: 1px solid #ccc; margin: 20px auto; }
+    .note {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: #fffd82;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: move;
+      resize: both;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <button id="addNote">Add Sticky Note</button>
+  <div id="board"></div>
+  <script>
+    const board = document.getElementById('board');
+    document.getElementById('addNote').addEventListener('click', () => {
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.textContent = 'New Note';
+      note.style.top = '20px';
+      note.style.left = '20px';
+      board.appendChild(note);
+      note.addEventListener('mousedown', dragStart);
+    });
+    function dragStart(e) {
+      const note = e.target;
+      let offsetX = e.clientX - note.offsetLeft;
+      let offsetY = e.clientY - note.offsetTop;
+      function drag(e) {
+        note.style.left = (e.clientX - offsetX) + 'px';
+        note.style.top = (e.clientY - offsetY) + 'px';
+      }
+      function dragEnd() { document.removeEventListener('mousemove', drag); }
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', dragEnd, { once: true });
+    }
+  </script>
+</body>
+</html>

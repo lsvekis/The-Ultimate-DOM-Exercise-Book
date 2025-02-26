@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carousel with Thumbnails</title>
+  <style>
+    #mainImage { width: 300px; height: 200px; }
+    .thumbnail { width: 80px; cursor: pointer; margin: 5px; }
+  </style>
+</head>
+<body>
+  <img id="mainImage" src="https://via.placeholder.com/300x200?text=1" alt="Main Image">
+  <div>
+    <img class="thumbnail" src="https://via.placeholder.com/80?text=1" data-large="https://via.placeholder.com/300x200?text=1" alt="Thumb 1">
+    <img class="thumbnail" src="https://via.placeholder.com/80?text=2" data-large="https://via.placeholder.com/300x200?text=2" alt="Thumb 2">
+    <img class="thumbnail" src="https://via.placeholder.com/80?text=3" data-large="https://via.placeholder.com/300x200?text=3" alt="Thumb 3">
+  </div>
+  <script>
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        document.getElementById('mainImage').src = this.getAttribute('data-large');
+      });
+    });
+  </script>
+</body>
+</html>

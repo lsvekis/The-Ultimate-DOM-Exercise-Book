@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto-Dismiss Notification</title>
+  <style>
+    .notification {
+      background: #e7f3fe;
+      border: 1px solid #b3d4fc;
+      padding: 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <button id="notifyBtn">Show Notification</button>
+  <div id="notifContainer"></div>
+  <script>
+    document.getElementById('notifyBtn').addEventListener('click', () => {
+      const notif = document.createElement('div');
+      notif.className = 'notification';
+      notif.textContent = 'This notification will disappear in 3 seconds.';
+      document.getElementById('notifContainer').appendChild(notif);
+      setTimeout(() => { notif.remove(); }, 3000);
+    });
+  </script>
+</body>
+</html>

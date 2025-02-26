@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Tooltip</title>
+  <style>
+    .hover-target { padding: 20px; border: 1px solid #ccc; display: inline-block; }
+    #apiTooltip {
+      position: absolute;
+      background: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      display: none;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="hover-target" id="apiTarget">Hover over me for data</div>
+  <div id="apiTooltip"></div>
+  <script>
+    const target = document.getElementById('apiTarget');
+    const tooltip = document.getElementById('apiTooltip');
+    target.addEventListener('mouseover', () => {
+      // Simulate API call
+      setTimeout(() => {
+        tooltip.textContent = "Fetched data: Example information.";
+        tooltip.style.display = 'block';
+        tooltip.style.left = target.getBoundingClientRect().right + 'px';
+        tooltip.style.top = target.getBoundingClientRect().top + 'px';
+      }, 500);
+    });
+    target.addEventListener('mouseout', () => {
+      tooltip.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

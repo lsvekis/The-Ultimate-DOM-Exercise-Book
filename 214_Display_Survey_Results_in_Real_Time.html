@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Survey Results</title>
+  <style>
+    .result-bar {
+      height: 20px;
+      background: #3498db;
+      margin: 5px 0;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>Option A: <span id="voteA">0</span> votes</p>
+    <div class="result-bar" id="barA" style="width: 0;"></div>
+    <p>Option B: <span id="voteB">0</span> votes</p>
+    <div class="result-bar" id="barB" style="width: 0;"></div>
+  </div>
+  <button onclick="vote('A')">Vote Option A</button>
+  <button onclick="vote('B')">Vote Option B</button>
+  <script>
+    let votes = { A: 0, B: 0 };
+    function vote(option) {
+      votes[option]++;
+      const total = votes.A + votes.B;
+      document.getElementById('voteA').textContent = votes.A;
+      document.getElementById('voteB').textContent = votes.B;
+      document.getElementById('barA').style.width = (votes.A / total * 100) + '%';
+      document.getElementById('barB').style.width = (votes.B / total * 100) + '%';
+    }
+  </script>
+</body>
+</html>

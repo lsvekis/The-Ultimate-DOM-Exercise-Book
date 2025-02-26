@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Editor</title>
+  <style>
+    #editableImage { width: 300px; transition: filter 0.3s; }
+  </style>
+</head>
+<body>
+  <img id="editableImage" src="https://via.placeholder.com/300x200?text=Editable" alt="Editable">
+  <br>
+  <label>Grayscale: <input type="range" id="grayscale" min="0" max="100" value="0"></label>
+  <script>
+    const image = document.getElementById('editableImage');
+    document.getElementById('grayscale').addEventListener('input', function() {
+      image.style.filter = `grayscale(${this.value}%)`;
+    });
+  </script>
+</body>
+</html>

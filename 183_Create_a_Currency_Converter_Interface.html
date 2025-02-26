@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Converter</title>
+</head>
+<body>
+  <label>Amount in USD: <input type="number" id="usdInput" value="1"></label>
+  <button id="convertBtn">Convert to EUR</button>
+  <p>Equivalent in EUR: <span id="eurOutput">0</span></p>
+  <script>
+    const conversionRate = 0.85; // Example rate
+    document.getElementById('convertBtn').addEventListener('click', () => {
+      const usd = Number(document.getElementById('usdInput').value);
+      document.getElementById('eurOutput').textContent = (usd * conversionRate).toFixed(2);
+    });
+  </script>
+</body>
+</html>

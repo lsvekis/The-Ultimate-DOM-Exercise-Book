@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Language Toggle</title>
+</head>
+<body>
+  <p id="greeting">Hello!</p>
+  <button id="toggleLang">Switch to Spanish</button>
+  <script>
+    const greeting = document.getElementById('greeting');
+    const toggleLang = document.getElementById('toggleLang');
+    toggleLang.addEventListener('click', () => {
+      if (greeting.textContent === "Hello!") {
+        greeting.textContent = "¡Hola!";
+        toggleLang.textContent = "Switch to English";
+      } else {
+        greeting.textContent = "Hello!";
+        toggleLang.textContent = "Switch to Spanish";
+      }
+    });
+  </script>
+</body>
+</html>

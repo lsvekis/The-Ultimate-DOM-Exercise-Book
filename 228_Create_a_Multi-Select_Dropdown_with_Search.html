@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Select Dropdown</title>
+  <style>
+    #dropdown { border: 1px solid #ccc; width: 200px; padding: 5px; }
+    .option { padding: 5px; cursor: pointer; }
+    .option:hover { background: #eee; }
+    #selected { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <input type="text" id="dropdownSearch" placeholder="Search options...">
+  <div id="dropdown"></div>
+  <div id="selected">Selected: None</div>
+  <script>
+    const options = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+    let selectedOptions = [];
+    const dropdown = document.getElementById('dropdown');
+    const searchInput = document.getElementById('dropdownSearch');
+    function renderOptions(filter = '') {
+      dropdown.innerHTML = '';
+      options.filter(opt => opt.toLowerCase().includes(filter.toLowerCase()))
+             .forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.textContent = opt;
+        div.addEventListener('click', () => {
+          if (!selectedOptions.includes(opt)) selectedOptions.push(opt);
+          document.getElementById('selected').textContent = 'Selected: ' + selectedOptions.join(', ');
+        });
+        dropdown.appendChild(div);
+      });
+    }
+    searchInput.addEventListener('input', () => renderOptions(searchInput.value));
+    renderOptions();
+  </script>
+</body>
+</html>

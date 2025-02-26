@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtualized List with Load More</title>
+  <style>
+    #listContainer { height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
+    .item { padding: 5px; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <div id="listContainer"></div>
+  <button id="loadMore">Load More</button>
+  <script>
+    let itemsLoaded = 0;
+    const container = document.getElementById('listContainer');
+    function loadItems(count) {
+      for (let i = 0; i < count; i++) {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.textContent = 'Item ' + (++itemsLoaded);
+        container.appendChild(div);
+      }
+    }
+    loadItems(20);
+    document.getElementById('loadMore').addEventListener('click', () => {
+      loadItems(10);
+    });
+  </script>
+</body>
+</html>

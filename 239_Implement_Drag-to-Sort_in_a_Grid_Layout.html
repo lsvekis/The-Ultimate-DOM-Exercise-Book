@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag-to-Sort Grid</title>
+  <style>
+    #grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .item {
+      width: 100px;
+      height: 100px;
+      background: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div id="grid">
+    <div class="item" draggable="true">1</div>
+    <div class="item" draggable="true">2</div>
+    <div class="item" draggable="true">3</div>
+    <div class="item" draggable="true">4</div>
+  </div>
+  <script>
+    const items = document.querySelectorAll('.item');
+    let draggedItem = null;
+    items.forEach(item => {
+      item.addEventListener('dragstart', function() { draggedItem = this; });
+      item.addEventListener('dragover', e => { e.preventDefault(); });
+      item.addEventListener('drop', function() {
+        this.parentNode.insertBefore(draggedItem, this.nextSibling);
+      });
+    });
+  </script>
+</body>
+</html>

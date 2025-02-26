@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Application</title>
+  <style>
+    #quiz { max-width: 400px; margin: auto; }
+    .question { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="quiz"></div>
+  <button id="nextQuestion">Next Question</button>
+  <p id="score">Score: 0</p>
+  <script>
+    const quizData = [
+      { question: "What is 2 + 2?", answer: "4" },
+      { question: "What is the capital of France?", answer: "Paris" }
+    ];
+    let current = 0, score = 0;
+    const quizDiv = document.getElementById('quiz');
+    const scoreDisplay = document.getElementById('score');
+    function loadQuestion() {
+      if (current < quizData.length) {
+        quizDiv.innerHTML = `<div class="question">${quizData[current].question}</div>
+          <input type="text" id="userAnswer" placeholder="Your answer">`;
+      } else {
+        quizDiv.textContent = "Quiz Completed!";
+      }
+    }
+    document.getElementById('nextQuestion').addEventListener('click', () => {
+      const userAnswer = document.getElementById('userAnswer').value;
+      if (userAnswer.trim().toLowerCase() === quizData[current].answer.toLowerCase()) {
+        score++;
+        scoreDisplay.textContent = 'Score: ' + score;
+      }
+      current++;
+      loadQuestion();
+    });
+    loadQuestion();
+  </script>
+</body>
+</html>

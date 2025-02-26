@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Playlist</title>
+  <style>
+    .playlist-item { cursor: pointer; margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <video id="videoPlayer" width="400" controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
+  <div id="playlist">
+    <div class="playlist-item" data-src="https://www.w3schools.com/html/mov_bbb.mp4">Video 1</div>
+    <div class="playlist-item" data-src="https://www.w3schools.com/html/movie.mp4">Video 2</div>
+  </div>
+  <script>
+    document.querySelectorAll('.playlist-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const src = this.getAttribute('data-src');
+        const player = document.getElementById('videoPlayer');
+        player.querySelector('source').src = src;
+        player.load();
+        player.play();
+      });
+    });
+  </script>
+</body>
+</html>

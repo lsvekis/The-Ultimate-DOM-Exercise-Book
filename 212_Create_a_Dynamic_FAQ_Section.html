@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic FAQ</title>
+  <style>
+    .faq { border: 1px solid #ccc; margin: 10px 0; }
+    .faq-question { background: #eee; padding: 10px; cursor: pointer; }
+    .faq-answer { padding: 10px; display: none; }
+  </style>
+</head>
+<body>
+  <div id="faqContainer"></div>
+  <script>
+    const faqs = [
+      { question: "What is your return policy?", answer: "You can return items within 30 days." },
+      { question: "Do you ship internationally?", answer: "Yes, we ship worldwide." }
+    ];
+    const container = document.getElementById('faqContainer');
+    faqs.forEach(faq => {
+      const faqDiv = document.createElement('div');
+      faqDiv.className = 'faq';
+      faqDiv.innerHTML = `<div class="faq-question">${faq.question}</div>
+                          <div class="faq-answer">${faq.answer}</div>`;
+      faqDiv.querySelector('.faq-question').addEventListener('click', function() {
+        const answer = faqDiv.querySelector('.faq-answer');
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+      container.appendChild(faqDiv);
+    });
+  </script>
+</body>
+</html>

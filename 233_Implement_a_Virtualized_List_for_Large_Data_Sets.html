@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtualized List</title>
+  <style>
+    #listContainer { height: 300px; overflow-y: auto; border: 1px solid #ccc; }
+    .item { padding: 10px; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <div id="listContainer"></div>
+  <script>
+    const container = document.getElementById('listContainer');
+    const totalItems = 1000;
+    const itemHeight = 40;
+    container.style.height = '300px';
+    container.addEventListener('scroll', renderVisible);
+    function renderVisible() {
+      const scrollTop = container.scrollTop;
+      const start = Math.floor(scrollTop / itemHeight);
+      const end = start + Math.ceil(container.clientHeight / itemHeight);
+      container.innerHTML = '';
+      for (let i = start; i <= end && i < totalItems; i++) {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.textContent = `Item ${i + 1}`;
+        container.appendChild(div);
+      }
+    }
+    // Initial render
+    renderVisible();
+  </script>
+</body>
+</html>

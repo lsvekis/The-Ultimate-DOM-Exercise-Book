@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Context Menu</title>
+  <style>
+    #customMenu {
+      display: none;
+      position: absolute;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 5px;
+      z-index: 1000;
+    }
+    #customMenu div { padding: 5px; cursor: pointer; }
+    #customMenu div:hover { background: #eee; }
+  </style>
+</head>
+<body>
+  <p id="textPara">Right-click this paragraph for text options.</p>
+  <p id="imagePara">Right-click this paragraph for image options.</p>
+  <div id="customMenu"></div>
+  <script>
+    const menu = document.getElementById('customMenu');
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      menu.innerHTML = '';
+      if (e.target.id === 'textPara') {
+        menu.innerHTML += '<div>Copy Text</div><div>Highlight Text</div>';
+      } else if (e.target.id === 'imagePara') {
+        menu.innerHTML += '<div>View Image</div><div>Download Image</div>';
+      } else {
+        menu.innerHTML += '<div>Default Option</div>';
+      }
+      menu.style.top = e.pageY + 'px';
+      menu.style.left = e.pageX + 'px';
+      menu.style.display = 'block';
+    });
+    document.addEventListener('click', () => { menu.style.display = 'none'; });
+  </script>
+</body>
+</html>

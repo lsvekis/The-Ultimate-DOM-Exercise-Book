@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Today in Calendar</title>
+  <style>
+    #calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; max-width: 400px; }
+    .day { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    .today { background: #ffeb3b; }
+  </style>
+</head>
+<body>
+  <div id="calendar"></div>
+  <script>
+    const calendar = document.getElementById('calendar');
+    const now = new Date();
+    const today = now.getDate();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'day';
+      calendar.appendChild(empty);
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dayCell = document.createElement('div');
+      dayCell.className = 'day';
+      dayCell.textContent = d;
+      if (d === today) {
+        dayCell.classList.add('today');
+      }
+      calendar.appendChild(dayCell);
+    }
+  </script>
+</body>
+</html>

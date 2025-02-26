@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delayed Tooltip</title>
+  <style>
+    .tooltip {
+      position: absolute;
+      background: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      display: none;
+      font-size: 0.9em;
+    }
+    .hover-target { padding: 20px; border: 1px solid #ccc; display: inline-block; }
+  </style>
+</head>
+<body>
+  <div class="hover-target" id="delayedTarget">Hover over me</div>
+  <div id="delayedTooltip" class="tooltip">Delayed Tooltip</div>
+  <script>
+    const target = document.getElementById('delayedTarget');
+    const tooltip = document.getElementById('delayedTooltip');
+    let timeout;
+    target.addEventListener('mouseover', (e) => {
+      timeout = setTimeout(() => {
+        tooltip.style.display = 'block';
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY + 10 + 'px';
+      }, 500);
+    });
+    target.addEventListener('mouseout', () => {
+      clearTimeout(timeout);
+      tooltip.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

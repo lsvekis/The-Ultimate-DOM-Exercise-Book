@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sticky Element</title>
+  <style>
+    #sticky {
+      background: #f39c12;
+      padding: 10px;
+      transition: position 0.3s;
+    }
+    .fixed { position: fixed; top: 0; width: 100%; }
+    .spacer { height: 50px; }
+  </style>
+</head>
+<body>
+  <div style="height:800px; padding:20px;">
+    <div id="sticky">I become sticky!</div>
+    <div class="spacer"></div>
+    <p>Scroll down...</p>
+  </div>
+  <script>
+    const stickyEl = document.getElementById('sticky');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        stickyEl.classList.toggle('fixed', !entry.isIntersecting);
+      });
+    }, { threshold: 1.0 });
+    observer.observe(stickyEl);
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Image Rotator</title>
+  <style>
+    #image {
+      width: 300px;
+      transition: transform 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="https://via.placeholder.com/300x200?text=Rotate+Me" alt="Rotatable Image">
+  <br>
+  <label for="rotateRange">Rotate:</label>
+  <input type="range" id="rotateRange" min="0" max="360" value="0">
+  <span id="rotateValue">0°</span>
+  <script>
+    const image = document.getElementById('image');
+    const range = document.getElementById('rotateRange');
+    const rotateValue = document.getElementById('rotateValue');
+    
+    range.addEventListener('input', () => {
+      const degrees = range.value;
+      image.style.transform = `rotate(${degrees}deg)`;
+      rotateValue.textContent = `${degrees}°`;
+    });
+  </script>
+</body>
+</html>

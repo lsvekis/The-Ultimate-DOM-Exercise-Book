@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MutationObserver Example</title>
+</head>
+<body>
+  <div id="observeMe">
+    <p>Initial content.</p>
+  </div>
+  <button id="addContent">Add Content</button>
+  <script>
+    const targetNode = document.getElementById('observeMe');
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        console.log('Mutation observed:', mutation);
+      });
+    });
+    observer.observe(targetNode, { childList: true, subtree: true });
+    document.getElementById('addContent').addEventListener('click', () => {
+      const newPara = document.createElement('p');
+      newPara.textContent = 'New content added.';
+      targetNode.appendChild(newPara);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag and Drop File Uploader</title>
+  <style>
+    #dropArea {
+      width: 300px;
+      height: 150px;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 150px;
+      color: #ccc;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="dropArea">Drag & Drop Files Here</div>
+  <script>
+    const dropArea = document.getElementById('dropArea');
+    dropArea.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropArea.style.borderColor = 'green';
+    });
+    dropArea.addEventListener('dragleave', e => {
+      e.preventDefault();
+      dropArea.style.borderColor = '#ccc';
+    });
+    dropArea.addEventListener('drop', e => {
+      e.preventDefault();
+      dropArea.style.borderColor = '#ccc';
+      const files = e.dataTransfer.files;
+      dropArea.textContent = `${files.length} file(s) dropped.`;
+    });
+  </script>
+</body>
+</html>

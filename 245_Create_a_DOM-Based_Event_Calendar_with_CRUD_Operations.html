@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Calendar</title>
+  <style>
+    #events { margin: 20px; }
+    .event { padding: 5px; border: 1px solid #ccc; margin-bottom: 5px; }
+    .delete { color: red; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <input type="date" id="eventDate">
+  <input type="text" id="eventDesc" placeholder="Event description">
+  <button id="addEvent">Add Event</button>
+  <div id="events"></div>
+  <script>
+    const eventsDiv = document.getElementById('events');
+    document.getElementById('addEvent').addEventListener('click', () => {
+      const date = document.getElementById('eventDate').value;
+      const desc = document.getElementById('eventDesc').value;
+      if (date && desc) {
+        const eventDiv = document.createElement('div');
+        eventDiv.className = 'event';
+        eventDiv.innerHTML = `<strong>${date}</strong>: ${desc} <span class="delete">x</span>`;
+        eventDiv.querySelector('.delete').addEventListener('click', () => eventDiv.remove());
+        eventsDiv.appendChild(eventDiv);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated FAQ Reveal</title>
+  <style>
+    .faq { margin: 10px 0; border: 1px solid #ccc; }
+    .faq-question { padding: 10px; background: #f1f1f1; cursor: pointer; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; padding: 0 10px; }
+    .faq.open .faq-answer { max-height: 100px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <div class="faq">
+    <div class="faq-question">What is your return policy?</div>
+    <div class="faq-answer">Return within 30 days.</div>
+  </div>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', function() {
+        this.parentNode.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

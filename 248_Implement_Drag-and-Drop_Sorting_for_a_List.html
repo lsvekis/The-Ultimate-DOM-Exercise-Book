@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Draggable List Sorting</title>
+  <style>
+    #sortableList { list-style: none; padding: 0; }
+    #sortableList li { padding: 10px; border: 1px solid #ccc; margin: 5px 0; cursor: move; }
+  </style>
+</head>
+<body>
+  <ul id="sortableList">
+    <li draggable="true">Item A</li>
+    <li draggable="true">Item B</li>
+    <li draggable="true">Item C</li>
+  </ul>
+  <script>
+    let draggedItem;
+    document.querySelectorAll('#sortableList li').forEach(item => {
+      item.addEventListener('dragstart', function() { draggedItem = this; });
+      item.addEventListener('dragover', e => { e.preventDefault(); });
+      item.addEventListener('drop', function() {
+        this.parentNode.insertBefore(draggedItem, this.nextSibling);
+      });
+    });
+  </script>
+</body>
+</html>

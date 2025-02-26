@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popup Survey Form</title>
+  <style>
+    #surveyModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    #surveyContent {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <button id="openSurvey">Take Survey</button>
+  <div id="surveyModal">
+    <div id="surveyContent">
+      <form id="surveyForm">
+        <label>How satisfied are you? 
+          <select required>
+            <option value="">Select</option>
+            <option value="Very Satisfied">Very Satisfied</option>
+            <option value="Satisfied">Satisfied</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Dissatisfied">Dissatisfied</option>
+          </select>
+        </label>
+        <br><br>
+        <button type="submit">Submit Survey</button>
+      </form>
+      <button id="closeSurvey">Close</button>
+    </div>
+  </div>
+  <script>
+    const surveyModal = document.getElementById('surveyModal');
+    document.getElementById('openSurvey').addEventListener('click', () => { surveyModal.style.display = 'flex'; });
+    document.getElementById('closeSurvey').addEventListener('click', () => { surveyModal.style.display = 'none'; });
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Survey submitted. Thank you!");
+      surveyModal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

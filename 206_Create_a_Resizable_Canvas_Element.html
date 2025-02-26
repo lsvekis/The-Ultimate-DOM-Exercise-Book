@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resizable Canvas</title>
+  <style>
+    #canvas { border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <label>Width: <input type="number" id="canvasWidth" value="500"></label>
+  <label>Height: <input type="number" id="canvasHeight" value="300"></label>
+  <button id="resizeCanvas">Resize Canvas</button>
+  <br>
+  <canvas id="canvas" width="500" height="300"></canvas>
+  <script>
+    document.getElementById('resizeCanvas').addEventListener('click', () => {
+      const width = document.getElementById('canvasWidth').value;
+      const height = document.getElementById('canvasHeight').value;
+      const canvas = document.getElementById('canvas');
+      canvas.width = width;
+      canvas.height = height;
+    });
+  </script>
+</body>
+</html>

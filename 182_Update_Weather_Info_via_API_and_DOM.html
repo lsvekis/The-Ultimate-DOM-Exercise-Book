@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather API Widget</title>
+  <style>
+    #weatherWidget { border: 1px solid #ccc; padding: 15px; width: 200px; }
+  </style>
+</head>
+<body>
+  <div id="weatherWidget">
+    <h3>Weather</h3>
+    <p id="temperature">Temperature: --°C</p>
+    <p id="condition">Condition: --</p>
+  </div>
+  <script>
+    // Simulated API call
+    function getWeather() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve({ temperature: 18, condition: "Cloudy" });
+        }, 1000);
+      });
+    }
+    getWeather().then(data => {
+      document.getElementById('temperature').textContent = `Temperature: ${data.temperature}°C`;
+      document.getElementById('condition').textContent = `Condition: ${data.condition}`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Event</title>
+</head>
+<body>
+  <h1 id="countdown">10</h1>
+  <script>
+    const countdownElem = document.getElementById('countdown');
+    let count = 10;
+    const timer = setInterval(() => {
+      count--;
+      countdownElem.textContent = count;
+      if (count === 0) {
+        clearInterval(timer);
+        const event = new Event('countdownFinished');
+        document.dispatchEvent(event);
+      }
+    }, 1000);
+    document.addEventListener('countdownFinished', () => {
+      alert("Countdown finished!");
+    });
+  </script>
+</body>
+</html>

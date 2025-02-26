@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page Language Toggle</title>
+</head>
+<body>
+  <h1 id="title">Welcome</h1>
+  <p id="intro">This is a sample page.</p>
+  <button id="langToggle">Switch to French</button>
+  <script>
+    const translations = {
+      en: { title: "Welcome", intro: "This is a sample page.", button: "Switch to French" },
+      fr: { title: "Bienvenue", intro: "Ceci est une page d'exemple.", button: "Switch to English" }
+    };
+    let currentLang = 'en';
+    document.getElementById('langToggle').addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'fr' : 'en';
+      document.getElementById('title').textContent = translations[currentLang].title;
+      document.getElementById('intro').textContent = translations[currentLang].intro;
+      document.getElementById('langToggle').textContent = translations[currentLang].button;
+    });
+  </script>
+</body>
+</html>

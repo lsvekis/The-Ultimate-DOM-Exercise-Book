@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Date Picker</title>
+  <style>
+    #datePicker {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 250px;
+      background: #fff;
+      position: absolute;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="dateInput" placeholder="Select a date">
+  <div id="datePicker">
+    <p>Calendar would appear here.</p>
+  </div>
+  <script>
+    const dateInput = document.getElementById('dateInput');
+    const datePicker = document.getElementById('datePicker');
+    dateInput.addEventListener('focus', () => { datePicker.style.display = 'block'; });
+    dateInput.addEventListener('blur', () => {
+      setTimeout(() => { datePicker.style.display = 'none'; }, 200);
+    });
+  </script>
+</body>
+</html>

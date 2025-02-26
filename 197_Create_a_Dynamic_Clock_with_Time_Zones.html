@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>World Clocks</title>
+</head>
+<body>
+  <div id="clockNY">New York: --:--:--</div>
+  <div id="clockLDN">London: --:--:--</div>
+  <script>
+    function updateClocks() {
+      const now = new Date();
+      document.getElementById('clockNY').textContent = "New York: " + now.toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
+      document.getElementById('clockLDN').textContent = "London: " + now.toLocaleTimeString('en-GB', { timeZone: 'Europe/London' });
+    }
+    setInterval(updateClocks, 1000);
+    updateClocks();
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Select Dropdown</title>
+  <style>
+    .dropdown { border: 1px solid #ccc; width: 200px; }
+    .option { display: flex; align-items: center; padding: 5px; cursor: pointer; }
+    .option img { width: 20px; height: 20px; margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <div id="dropdown" class="dropdown"></div>
+  <p>Selected: <span id="selectedOption">None</span></p>
+  <script>
+    const options = [
+      { text: "Option 1", img: "https://via.placeholder.com/20?text=1" },
+      { text: "Option 2", img: "https://via.placeholder.com/20?text=2" },
+      { text: "Option 3", img: "https://via.placeholder.com/20?text=3" }
+    ];
+    const dropdown = document.getElementById('dropdown');
+    const selected = document.getElementById('selectedOption');
+    options.forEach(opt => {
+      const div = document.createElement('div');
+      div.className = 'option';
+      div.innerHTML = `<img src="${opt.img}" alt="${opt.text}"><span>${opt.text}</span>`;
+      div.addEventListener('click', () => { selected.textContent = opt.text; });
+      dropdown.appendChild(div);
+    });
+  </script>
+</body>
+</html>

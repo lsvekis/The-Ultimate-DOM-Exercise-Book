@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Social Share Widget</title>
+  <style>
+    .share-btn { margin: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="shareWidget">
+    <span class="share-btn" data-platform="facebook">Facebook (<span class="count">0</span>)</span>
+    <span class="share-btn" data-platform="twitter">Twitter (<span class="count">0</span>)</span>
+  </div>
+  <script>
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const countSpan = this.querySelector('.count');
+        let count = Number(countSpan.textContent);
+        countSpan.textContent = ++count;
+      });
+    });
+  </script>
+</body>
+</html>

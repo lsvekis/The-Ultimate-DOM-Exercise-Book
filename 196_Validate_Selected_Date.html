@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date Validation</title>
+</head>
+<body>
+  <input type="date" id="dateInput">
+  <p id="errorMsg" style="color:red;"></p>
+  <script>
+    const dateInput = document.getElementById('dateInput');
+    const errorMsg = document.getElementById('errorMsg');
+    dateInput.addEventListener('change', function() {
+      const selectedDate = new Date(this.value);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      if (selectedDate < today) {
+        errorMsg.textContent = "Please select a future date.";
+      } else {
+        errorMsg.textContent = "";
+      }
+    });
+  </script>
+</body>
+</html>

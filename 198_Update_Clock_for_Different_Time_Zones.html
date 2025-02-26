@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Zone Clock</title>
+</head>
+<body>
+  <select id="timeZoneSelect">
+    <option value="America/New_York">New York</option>
+    <option value="Europe/London">London</option>
+    <option value="Asia/Tokyo">Tokyo</option>
+  </select>
+  <h1 id="clockDisplay">--:--:--</h1>
+  <script>
+    const clockDisplay = document.getElementById('clockDisplay');
+    const select = document.getElementById('timeZoneSelect');
+    function updateClock() {
+      const now = new Date();
+      clockDisplay.textContent = now.toLocaleTimeString('en-US', { timeZone: select.value });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

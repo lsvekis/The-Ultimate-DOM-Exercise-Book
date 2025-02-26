@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Slider</title>
+  <style>
+    #sliderContainer {
+      width: 300px;
+      height: 10px;
+      background: #ddd;
+      position: relative;
+      margin: 20px;
+    }
+    #sliderHandle {
+      width: 20px;
+      height: 20px;
+      background: #3498db;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="sliderContainer">
+    <div id="sliderHandle"></div>
+  </div>
+  <p>Value: <span id="sliderValue">0</span></p>
+  <script>
+    const container = document.getElementById('sliderContainer');
+    const handle = document.getElementById('sliderHandle');
+    const valueDisplay = document.getElementById('sliderValue');
+    let dragging = false;
+    handle.addEventListener('mousedown', () => { dragging = true; });
+    document.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      const rect = container.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+      handle.style.left = (x - handle.offsetWidth / 2) + 'px';
+      valueDisplay.textContent = Math.round((x / rect.width) * 100);
+    });
+    document.addEventListener('mouseup', () => { dragging = false; });
+  </script>
+</body>
+</html>

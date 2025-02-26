@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debouncing Example</title>
+</head>
+<body>
+  <input type="text" id="debounceInput" placeholder="Type quickly...">
+  <p id="output"></p>
+  <script>
+    function debounce(func, delay) {
+      let timeout;
+      return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+    const output = document.getElementById('output');
+    const updateOutput = debounce(function(e) {
+      output.textContent = 'You typed: ' + e.target.value;
+    }, 500);
+    document.getElementById('debounceInput').addEventListener('input', updateOutput);
+  </script>
+</body>
+</html>

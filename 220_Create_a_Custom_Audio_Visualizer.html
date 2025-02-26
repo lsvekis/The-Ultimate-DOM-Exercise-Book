@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Visualizer</title>
+  <style>
+    #visualizer { display: flex; height: 100px; }
+    .bar { flex: 1; margin: 0 2px; background: #3498db; transition: height 0.2s; }
+  </style>
+</head>
+<body>
+  <audio id="audio" src="https://www.w3schools.com/html/mov_bbb.mp4" controls></audio>
+  <div id="visualizer">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+  <script>
+    const audio = document.getElementById('audio');
+    const bars = document.querySelectorAll('.bar');
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const analyser = audioCtx.createAnalyser();
+    const source = audioCtx.createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 64;
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    function animate() {
+      requestAnimationFrame(animate);
+      analyser.getByteFrequencyData(dataArray);
+      bars.forEach((bar, i) => {
+        bar.style.height = dataArray[i] + 'px';
+      });
+    }
+    audio.addEventListener('play', () => audioCtx.resume().then(animate));
+  </script>
+</body>
+</html>

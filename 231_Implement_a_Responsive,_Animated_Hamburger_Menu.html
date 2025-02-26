@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hamburger Menu</title>
+  <style>
+    .hamburger { cursor: pointer; width: 30px; height: 25px; position: relative; }
+    .hamburger div {
+      background: #333;
+      height: 5px;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+    .menu { display: none; }
+    .menu.active { display: block; background: #eee; padding: 10px; }
+  </style>
+</head>
+<body>
+  <div class="hamburger" id="hamburger">
+    <div></div><div></div><div></div>
+  </div>
+  <div class="menu" id="mobileMenu">
+    <a href="#">Home</a><br>
+    <a href="#">About</a><br>
+    <a href="#">Contact</a>
+  </div>
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

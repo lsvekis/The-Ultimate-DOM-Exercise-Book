@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Chart Data</title>
+  <style>
+    #chart { display: flex; align-items: flex-end; height: 200px; width: 300px; border-left: 1px solid #000; border-bottom: 1px solid #000; }
+    .bar { flex: 1; margin: 0 5px; background: #3498db; }
+  </style>
+</head>
+<body>
+  <div id="chart"></div>
+  <button id="updateChart">Update Chart</button>
+  <script>
+    const chart = document.getElementById('chart');
+    function renderChart(data) {
+      chart.innerHTML = '';
+      data.forEach(value => {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = value + '%';
+        chart.appendChild(bar);
+      });
+    }
+    renderChart([50, 80, 30, 90, 60]);
+    document.getElementById('updateChart').addEventListener('click', () => {
+      const newData = [70, 40, 90, 50, 80];
+      renderChart(newData);
+    });
+  </script>
+</body>
+</html>

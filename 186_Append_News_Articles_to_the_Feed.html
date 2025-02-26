@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Append News Articles</title>
+  <style>
+    .news-item { border-bottom: 1px solid #ccc; padding: 10px 0; }
+  </style>
+</head>
+<body>
+  <div id="newsFeed"></div>
+  <button id="loadMore">Load More News</button>
+  <script>
+    const feed = document.getElementById('newsFeed');
+    const newArticles = [
+      { title: "Breaking News 4", content: "Content of article 4." },
+      { title: "Breaking News 5", content: "Content of article 5." }
+    ];
+    document.getElementById('loadMore').addEventListener('click', () => {
+      newArticles.forEach(article => {
+        const item = document.createElement('div');
+        item.className = 'news-item';
+        item.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>`;
+        feed.appendChild(item);
+      });
+    });
+  </script>
+</body>
+</html>

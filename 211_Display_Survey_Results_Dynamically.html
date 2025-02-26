@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Results</title>
+</head>
+<body>
+  <form id="surveyForm">
+    <label>Rate our service:
+      <select id="rating" required>
+        <option value="">Select</option>
+        <option value="5">5 - Excellent</option>
+        <option value="4">4 - Good</option>
+        <option value="3">3 - Average</option>
+        <option value="2">2 - Poor</option>
+        <option value="1">1 - Terrible</option>
+      </select>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="results"></div>
+  <script>
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const rating = document.getElementById('rating').value;
+      document.getElementById('results').textContent = `Thank you! Your rating: ${rating}`;
+    });
+  </script>
+</body>
+</html>

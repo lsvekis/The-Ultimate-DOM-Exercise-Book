@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager</title>
+  <style>
+    .task { padding: 5px; border-bottom: 1px solid #ccc; cursor: pointer; }
+    .completed { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <input type="text" id="taskInput" placeholder="New task">
+  <button id="addTask">Add Task</button>
+  <div id="taskList"></div>
+  <script>
+    const taskList = document.getElementById('taskList');
+    document.getElementById('addTask').addEventListener('click', () => {
+      const taskText = document.getElementById('taskInput').value;
+      if (taskText) {
+        const taskDiv = document.createElement('div');
+        taskDiv.className = 'task';
+        taskDiv.textContent = taskText;
+        taskDiv.addEventListener('click', () => taskDiv.classList.toggle('completed'));
+        taskList.appendChild(taskDiv);
+        document.getElementById('taskInput').value = '';
+      }
+    });
+  </script>
+</body>
+</html>
