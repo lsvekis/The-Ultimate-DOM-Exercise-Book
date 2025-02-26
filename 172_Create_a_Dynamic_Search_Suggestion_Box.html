@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Suggestions</title>
+  <style>
+    #suggestions { border: 1px solid #ccc; max-width: 300px; }
+    #suggestions div { padding: 5px; cursor: pointer; }
+    #suggestions div:hover { background: #eee; }
+  </style>
+</head>
+<body>
+  <input type="text" id="searchBox" placeholder="Search...">
+  <div id="suggestions"></div>
+  <script>
+    const suggestions = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+    document.getElementById('searchBox').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const suggestionBox = document.getElementById('suggestions');
+      suggestionBox.innerHTML = '';
+      suggestions.filter(item => item.toLowerCase().includes(query))
+        .forEach(item => {
+          const div = document.createElement('div');
+          div.textContent = item;
+          suggestionBox.appendChild(div);
+        });
+    });
+  </script>
+</body>
+</html>

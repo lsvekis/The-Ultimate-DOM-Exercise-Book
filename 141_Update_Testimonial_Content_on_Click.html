@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual Testimonial Slider</title>
+  <style>
+    #testimonialSlider {
+      width: 400px;
+      height: 150px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <div id="testimonialSlider">"Great service!" - Alice</div>
+  <button id="prevTestimonial">Previous</button>
+  <button id="nextTestimonial">Next</button>
+  <script>
+    const testimonials = [
+      '"Great service!" - Alice',
+      '"Excellent quality!" - Bob',
+      '"Fast shipping!" - Charlie'
+    ];
+    let currentTestimonial = 0;
+    function updateTestimonial() {
+      document.getElementById('testimonialSlider').textContent = testimonials[currentTestimonial];
+    }
+    document.getElementById('prevTestimonial').addEventListener('click', () => {
+      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+      updateTestimonial();
+    });
+    document.getElementById('nextTestimonial').addEventListener('click', () => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      updateTestimonial();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Poll</title>
+  <style>
+    .poll-option { margin: 10px 0; }
+    .poll-bar { height: 20px; background: #3498db; width: 0; }
+  </style>
+</head>
+<body>
+  <div class="poll-option" data-option="A">
+    Option A <button class="voteBtn">Vote</button>
+    <div class="poll-bar" id="barA"></div>
+  </div>
+  <div class="poll-option" data-option="B">
+    Option B <button class="voteBtn">Vote</button>
+    <div class="poll-bar" id="barB"></div>
+  </div>
+  <script>
+    let votes = { A: 0, B: 0 };
+    const totalVotes = () => votes.A + votes.B;
+    document.querySelectorAll('.voteBtn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const option = this.parentNode.getAttribute('data-option');
+        votes[option]++;
+        document.getElementById('bar' + option).style.width = ((votes[option] / totalVotes()) * 100 || 0) + '%';
+      });
+    });
+  </script>
+</body>
+</html>

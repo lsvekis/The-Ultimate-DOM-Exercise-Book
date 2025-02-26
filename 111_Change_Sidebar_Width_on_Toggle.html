@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Sidebar Width</title>
+  <style>
+    #sidebar {
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      transition: width 0.5s;
+      width: 250px;
+    }
+    #sidebar.collapsed {
+      width: 80px;
+    }
+    #toggleBtn { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">Toggle Sidebar</button>
+  <div id="sidebar">
+    <p>Sidebar content.</p>
+  </div>
+  <script>
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+  </script>
+</body>
+</html>

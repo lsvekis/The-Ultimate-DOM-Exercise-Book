@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Chat Interface</title>
+  <style>
+    #chatContainer {
+      border: 1px solid #ccc;
+      height: 300px;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+    .message { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div id="chatContainer"></div>
+  <input type="text" id="chatInput" placeholder="Type a message...">
+  <button id="sendBtn">Send</button>
+  <script>
+    const chatContainer = document.getElementById('chatContainer');
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const input = document.getElementById('chatInput');
+      const message = document.createElement('div');
+      message.className = 'message';
+      message.textContent = input.value;
+      chatContainer.appendChild(message);
+      input.value = '';
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    });
+  </script>
+</body>
+</html>

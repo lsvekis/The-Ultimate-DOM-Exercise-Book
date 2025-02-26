@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar Scroll Spy</title>
+  <style>
+    .container { display: flex; }
+    .content { flex: 3; padding: 20px; }
+    .sidebar { flex: 1; position: sticky; top: 20px; background: #f7f7f7; padding: 10px; }
+    .sidebar a { display: block; margin: 5px 0; text-decoration: none; }
+    .sidebar a.active { font-weight: bold; color: red; }
+    section { margin: 50px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <section id="sec1"><h2>Section 1</h2><p>Content...</p></section>
+      <section id="sec2"><h2>Section 2</h2><p>Content...</p></section>
+      <section id="sec3"><h2>Section 3</h2><p>Content...</p></section>
+    </div>
+    <div class="sidebar">
+      <a href="#sec1" class="side-link">Section 1</a>
+      <a href="#sec2" class="side-link">Section 2</a>
+      <a href="#sec3" class="side-link">Section 3</a>
+    </div>
+  </div>
+  <script>
+    const links = document.querySelectorAll('.side-link');
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 50) {
+          current = section.getAttribute('id');
+        }
+      });
+      links.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href').substring(1) === current);
+      });
+    });
+  </script>
+</body>
+</html>

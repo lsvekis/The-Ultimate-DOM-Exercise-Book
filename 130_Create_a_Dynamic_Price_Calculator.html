@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Price Calculator</title>
+</head>
+<body>
+  <label>Price: $<input type="number" id="price" value="50"></label><br>
+  <label>Quantity: <input type="number" id="quantity" value="1"></label><br>
+  <p>Total: $<span id="total">50</span></p>
+  <script>
+    const priceInput = document.getElementById('price');
+    const quantityInput = document.getElementById('quantity');
+    const totalDisplay = document.getElementById('total');
+    function updateTotal() {
+      totalDisplay.textContent = priceInput.value * quantityInput.value;
+    }
+    priceInput.addEventListener('input', updateTotal);
+    quantityInput.addEventListener('input', updateTotal);
+  </script>
+</body>
+</html>

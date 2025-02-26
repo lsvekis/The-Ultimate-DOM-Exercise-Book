@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Breadcrumb Navigation</title>
+  <style>
+    #breadcrumb { margin: 20px; }
+    #breadcrumb span { margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <div id="breadcrumb">Home</div>
+  <button onclick="navigate('Products')">Products</button>
+  <button onclick="navigate('Electronics')">Electronics</button>
+  <button onclick="navigate('Mobile Phones')">Mobile Phones</button>
+  <script>
+    const breadcrumb = document.getElementById('breadcrumb');
+    function navigate(page) {
+      breadcrumb.innerHTML += ' > <span>' + page + '</span>';
+    }
+  </script>
+</body>
+</html>

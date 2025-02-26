@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Active Menu Item</title>
+  <style>
+    nav a { padding: 10px; text-decoration: none; color: #333; }
+    nav a.active { background: #ddd; }
+  </style>
+</head>
+<body>
+  <nav id="navMenu">
+    <a href="#" class="menu-item">Home</a>
+    <a href="#" class="menu-item">About</a>
+    <a href="#" class="menu-item">Contact</a>
+  </nav>
+  <script>
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

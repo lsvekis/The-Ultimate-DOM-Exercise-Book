@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Confirmation</title>
+  <style>
+    form { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <form id="feedbackForm">
+    <label>Your Feedback:<br>
+      <textarea required rows="4" cols="40"></textarea>
+    </label>
+    <br>
+    <button type="submit">Submit Feedback</button>
+  </form>
+  <div id="confirmation" style="display:none; text-align:center; margin-top:20px;">Thank you for your feedback!</div>
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('confirmation').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

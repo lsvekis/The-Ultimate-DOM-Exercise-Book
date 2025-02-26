@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Profile Card</title>
+  <style>
+    #profileCard { border: 1px solid #ccc; padding: 15px; width: 250px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div id="profileCard">
+    <h2 id="userName">Jane Doe</h2>
+    <p id="userBio">Web developer with a passion for design.</p>
+  </div>
+  <input type="text" id="nameInput" placeholder="Update name">
+  <input type="text" id="bioInput" placeholder="Update bio">
+  <button id="updateBtn">Update Profile</button>
+  <script>
+    document.getElementById('updateBtn').addEventListener('click', () => {
+      const newName = document.getElementById('nameInput').value;
+      const newBio = document.getElementById('bioInput').value;
+      if(newName) document.getElementById('userName').textContent = newName;
+      if(newBio) document.getElementById('userBio').textContent = newBio;
+    });
+  </script>
+</body>
+</html>

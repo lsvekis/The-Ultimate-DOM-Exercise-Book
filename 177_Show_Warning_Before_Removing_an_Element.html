@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warning Before Deletion</title>
+</head>
+<body>
+  <div id="warnItem">This element will be removed.</div>
+  <button id="warnBtn">Remove Element</button>
+  <p id="warningMsg" style="color: red;"></p>
+  <script>
+    document.getElementById('warnBtn').addEventListener('click', () => {
+      const confirmDelete = confirm("Are you sure you want to remove this element?");
+      if (confirmDelete) {
+        document.getElementById('warnItem').remove();
+      } else {
+        document.getElementById('warningMsg').textContent = "Deletion canceled.";
+      }
+    });
+  </script>
+</body>
+</html>

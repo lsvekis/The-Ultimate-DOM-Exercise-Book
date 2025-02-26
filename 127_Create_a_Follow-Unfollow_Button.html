@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Follow/Unfollow Button</title>
+</head>
+<body>
+  <button id="followBtn">Follow</button>
+  <script>
+    const btn = document.getElementById('followBtn');
+    btn.addEventListener('click', () => {
+      btn.textContent = btn.textContent === 'Follow' ? 'Unfollow' : 'Follow';
+    });
+  </script>
+</body>
+</html>

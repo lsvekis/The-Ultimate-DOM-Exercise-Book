@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated FAQ Accordion</title>
+  <style>
+    .faq { margin: 10px 0; border: 1px solid #ccc; }
+    .question { padding: 10px; background: #f1f1f1; cursor: pointer; }
+    .answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      padding: 0 10px;
+    }
+    .faq.active .answer {
+      max-height: 100px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="faq">
+    <div class="question">How long is the warranty?</div>
+    <div class="answer">Warranty lasts for 1 year from the date of purchase.</div>
+  </div>
+  <script>
+    document.querySelectorAll('.question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentNode.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

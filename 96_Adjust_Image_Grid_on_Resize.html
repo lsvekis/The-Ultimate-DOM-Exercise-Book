@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Image Grid</title>
+  <style>
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .grid img {
+      width: 100%;
+      max-width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" id="imageGrid">
+    <img src="https://via.placeholder.com/150?text=1" alt="1">
+    <img src="https://via.placeholder.com/150?text=2" alt="2">
+    <img src="https://via.placeholder.com/150?text=3" alt="3">
+    <img src="https://via.placeholder.com/150?text=4" alt="4">
+    <img src="https://via.placeholder.com/150?text=5" alt="5">
+    <img src="https://via.placeholder.com/150?text=6" alt="6">
+  </div>
+  <script>
+    function adjustGrid() {
+      const grid = document.getElementById('imageGrid');
+      const images = grid.querySelectorAll('img');
+      images.forEach(img => {
+        img.style.flex = window.innerWidth < 600 ? '1 1 45%' : '1 1 20%';
+      });
+    }
+    window.addEventListener('resize', adjustGrid);
+    adjustGrid();
+  </script>
+</body>
+</html>

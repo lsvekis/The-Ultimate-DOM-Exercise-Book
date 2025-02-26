@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expand/Collapse FAQ</title>
+  <style>
+    .faq { margin: 10px 0; border: 1px solid #ccc; }
+    .question { padding: 10px; background: #f9f9f9; cursor: pointer; }
+    .answer { padding: 10px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="faq">
+    <div class="question">What are your business hours?</div>
+    <div class="answer">We operate from 9am to 5pm, Monday to Friday.</div>
+  </div>
+  <script>
+    document.querySelectorAll('.question').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

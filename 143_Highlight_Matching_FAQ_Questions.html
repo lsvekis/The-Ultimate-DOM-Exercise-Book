@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight FAQ Matches</title>
+  <style>
+    .highlight { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <input type="text" id="faqSearch" placeholder="Search FAQs...">
+  <div class="faq-item">How do I reset my password?</div>
+  <div class="faq-item">What is the return policy?</div>
+  <div class="faq-item">How do I track my order?</div>
+  <script>
+    document.getElementById('faqSearch').addEventListener('input', function() {
+      const term = this.value;
+      const regex = new RegExp(`(${term})`, 'gi');
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const text = item.textContent;
+        item.innerHTML = term ? text.replace(regex, '<span class="highlight">$1</span>') : text;
+      });
+    });
+  </script>
+</body>
+</html>

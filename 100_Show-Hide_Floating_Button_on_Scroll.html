@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Floating Button on Scroll</title>
+  <style>
+    #floatingBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #007BFF;
+      color: #fff;
+      display: none;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div style="height:1500px; padding:20px;">Scroll Down</div>
+  <button id="floatingBtn">Click Me</button>
+  <script>
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('floatingBtn');
+      btn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product List Update</title>
+  <style>
+    .product { border: 1px solid #ccc; padding: 10px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <select id="filterSelect">
+    <option value="all">All Products</option>
+    <option value="sale">On Sale</option>
+    <option value="new">New Arrivals</option>
+  </select>
+  <div id="productList">
+    <div class="product" data-type="sale">Product A (Sale)</div>
+    <div class="product" data-type="new">Product B (New)</div>
+    <div class="product" data-type="sale">Product C (Sale)</div>
+    <div class="product" data-type="new">Product D (New)</div>
+  </div>
+  <script>
+    document.getElementById('filterSelect').addEventListener('change', function() {
+      const filter = this.value;
+      document.querySelectorAll('#productList .product').forEach(product => {
+        product.style.display = (filter === 'all' || product.getAttribute('data-type') === filter) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

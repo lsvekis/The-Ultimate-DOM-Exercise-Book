@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Progress Indicator</title>
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+    #progress { margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div id="progress">Step 1 of 3</div>
+  <form id="form">
+    <div class="step active" id="step1">
+      <label>Name: <input type="text" required></label>
+      <button type="button" class="next">Next</button>
+    </div>
+    <div class="step" id="step2">
+      <label>Email: <input type="email" required></label>
+      <button type="button" class="prev">Previous</button>
+      <button type="button" class="next">Next</button>
+    </div>
+    <div class="step" id="step3">
+      <label>Message: <textarea required></textarea></label>
+      <button type="button" class="prev">Previous</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+  <script>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+    const progress = document.getElementById('progress');
+    function updateProgress() {
+      progress.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+    }
+    document.querySelectorAll('.next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        steps[currentStep].classList.remove('active');
+        currentStep++;
+        steps[currentStep].classList.add('active');
+        updateProgress();
+      });
+    });
+    document.querySelectorAll('.prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        steps[currentStep].classList.remove('active');
+        currentStep--;
+        steps[currentStep].classList.add('active');
+        updateProgress();
+      });
+    });
+    updateProgress();
+  </script>
+</body>
+</html>

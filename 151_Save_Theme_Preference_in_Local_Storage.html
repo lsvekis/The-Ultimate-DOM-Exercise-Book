@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Persistent Theme Preference</title>
+  <style>
+    :root {
+      --bg-color: #fff;
+      --text-color: #000;
+    }
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle">Toggle Dark Mode</button>
+  <script>
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      document.body.className = storedTheme;
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      if (document.body.classList.contains('dark')) {
+        document.body.classList.replace('dark', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.replace('light', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Collapsible Sidebar</title>
+  <style>
+    #sidebar {
+      width: 250px;
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      transition: width 0.3s;
+    }
+    #sidebar.collapsed {
+      width: 60px;
+    }
+    #toggleSidebar {
+      cursor: pointer;
+      background: #444;
+      color: #fff;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div id="toggleSidebar">Toggle</div>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  </div>
+  <script>
+    document.getElementById('toggleSidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+  </script>
+</body>
+</html>

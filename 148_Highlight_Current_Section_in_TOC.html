@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Active TOC Highlight</title>
+  <style>
+    #toc a { display: block; margin: 5px 0; text-decoration: none; }
+    #toc a.active { font-weight: bold; color: blue; }
+    section { height: 400px; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div id="toc">
+    <a href="#sec1" class="toc-link">Section 1</a>
+    <a href="#sec2" class="toc-link">Section 2</a>
+    <a href="#sec3" class="toc-link">Section 3</a>
+  </div>
+  <section id="sec1" style="background: #f1f1f1;">Section 1</section>
+  <section id="sec2" style="background: #e1e1e1;">Section 2</section>
+  <section id="sec3" style="background: #d1d1d1;">Section 3</section>
+  <script>
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current;
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 50) {
+          current = section.getAttribute('id');
+        }
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href').substring(1) === current);
+      });
+    });
+  </script>
+</body>
+</html>

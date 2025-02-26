@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Section in Viewport</title>
+  <style>
+    section {
+      height: 500px;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f1f1f1;
+      transition: background 0.3s;
+    }
+    section.active { background: #ffeb3b; }
+  </style>
+</head>
+<body>
+  <section id="sec1">Section 1</section>
+  <section id="sec2">Section 2</section>
+  <section id="sec3">Section 3</section>
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>

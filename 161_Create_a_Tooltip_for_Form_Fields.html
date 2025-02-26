@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Field Tooltip</title>
+  <style>
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .input-container { position: relative; margin: 20px; }
+  </style>
+</head>
+<body>
+  <div class="input-container">
+    <input type="text" id="username" placeholder="Enter username">
+    <div class="tooltip" id="usernameTooltip">Your unique username.</div>
+  </div>
+  <script>
+    const input = document.getElementById('username');
+    const tooltip = document.getElementById('usernameTooltip');
+    input.addEventListener('focus', () => { tooltip.style.display = 'block'; });
+    input.addEventListener('blur', () => { tooltip.style.display = 'none'; });
+  </script>
+</body>
+</html>

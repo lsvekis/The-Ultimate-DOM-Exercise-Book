@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Special Offer Countdown</title>
+</head>
+<body>
+  <h1 id="offerCountdown">Offer ends in: 10 seconds</h1>
+  <script>
+    let seconds = 10;
+    const countdownElem = document.getElementById('offerCountdown');
+    const interval = setInterval(() => {
+      seconds--;
+      countdownElem.textContent = `Offer ends in: ${seconds} seconds`;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        countdownElem.textContent = 'Offer has ended!';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

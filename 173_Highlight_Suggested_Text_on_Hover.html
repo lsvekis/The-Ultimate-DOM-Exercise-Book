@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Suggestions</title>
+  <style>
+    #suggestions div:hover { background: #d1e0ff; }
+  </style>
+</head>
+<body>
+  <!-- Reuse the code from Exercise 195; hover effect is applied via CSS -->
+  <input type="text" id="searchBox" placeholder="Search...">
+  <div id="suggestions"></div>
+  <script>
+    const suggestions = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+    document.getElementById('searchBox').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const suggestionBox = document.getElementById('suggestions');
+      suggestionBox.innerHTML = '';
+      suggestions.filter(item => item.toLowerCase().includes(query))
+        .forEach(item => {
+          const div = document.createElement('div');
+          div.textContent = item;
+          suggestionBox.appendChild(div);
+        });
+    });
+  </script>
+</body>
+</html>

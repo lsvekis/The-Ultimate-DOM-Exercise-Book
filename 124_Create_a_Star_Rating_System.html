@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Star Rating System</title>
+  <style>
+    .star { font-size: 30px; cursor: pointer; color: gray; }
+    .star.selected { color: gold; }
+  </style>
+</head>
+<body>
+  <div id="rating">
+    <span class="star" data-value="1">&#9733;</span>
+    <span class="star" data-value="2">&#9733;</span>
+    <span class="star" data-value="3">&#9733;</span>
+    <span class="star" data-value="4">&#9733;</span>
+    <span class="star" data-value="5">&#9733;</span>
+  </div>
+  <script>
+    document.querySelectorAll('.star').forEach(star => {
+      star.addEventListener('click', function() {
+        const rating = this.getAttribute('data-value');
+        document.querySelectorAll('.star').forEach(s => {
+          s.classList.toggle('selected', s.getAttribute('data-value') <= rating);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

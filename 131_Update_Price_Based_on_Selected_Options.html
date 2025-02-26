@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Price Update</title>
+</head>
+<body>
+  <select id="optionSelect">
+    <option value="0">Standard - $0</option>
+    <option value="10">Premium - $10</option>
+    <option value="20">Deluxe - $20</option>
+  </select>
+  <p>Base Price: $50</p>
+  <p>Total Price: $<span id="totalPrice">50</span></p>
+  <script>
+    const basePrice = 50;
+    document.getElementById('optionSelect').addEventListener('change', function() {
+      const optionPrice = Number(this.value);
+      document.getElementById('totalPrice').textContent = basePrice + optionPrice;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Widget</title>
+  <style>
+    #weatherWidget {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="weatherWidget">
+    <h3>Weather</h3>
+    <p id="temperature">Temperature: --°C</p>
+    <p id="condition">Condition: --</p>
+  </div>
+  <script>
+    // Mock weather data
+    const weatherData = { temperature: 22, condition: "Sunny" };
+    document.getElementById('temperature').textContent = `Temperature: ${weatherData.temperature}°C`;
+    document.getElementById('condition').textContent = `Condition: ${weatherData.condition}`;
+  </script>
+</body>
+</html>

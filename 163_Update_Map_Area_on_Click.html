@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Image Map</title>
+  <style>
+    area { outline: none; }
+  </style>
+</head>
+<body>
+  <img src="https://via.placeholder.com/500x300" usemap="#imageMap" alt="Image Map">
+  <map name="imageMap" id="imageMap">
+    <area shape="rect" coords="50,50,150,150" href="#" alt="Area 1">
+    <area shape="rect" coords="200,50,300,150" href="#" alt="Area 2">
+  </map>
+  <script>
+    document.querySelectorAll('area').forEach(area => {
+      area.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert(`You clicked on ${area.alt}`);
+      });
+    });
+  </script>
+</body>
+</html>

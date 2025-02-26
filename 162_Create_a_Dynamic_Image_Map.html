@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Image Map</title>
+</head>
+<body>
+  <img src="https://via.placeholder.com/500x300" usemap="#imageMap" alt="Image Map">
+  <map name="imageMap" id="imageMap">
+    <!-- Areas will be inserted dynamically -->
+  </map>
+  <script>
+    const areas = [
+      { coords: "50,50,150,150", href: "#", alt: "Area 1" },
+      { coords: "200,50,300,150", href: "#", alt: "Area 2" }
+    ];
+    const map = document.getElementById('imageMap');
+    areas.forEach(areaData => {
+      const area = document.createElement('area');
+      area.shape = 'rect';
+      area.coords = areaData.coords;
+      area.href = areaData.href;
+      area.alt = areaData.alt;
+      map.appendChild(area);
+    });
+  </script>
+</body>
+</html>

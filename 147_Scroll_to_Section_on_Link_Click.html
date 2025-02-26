@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll to Section</title>
+  <style>
+    section { height: 400px; padding: 20px; }
+    nav a { margin: 0 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#sec1">Section 1</a>
+    <a href="#sec2">Section 2</a>
+    <a href="#sec3">Section 3</a>
+  </nav>
+  <section id="sec1" style="background: lightcoral;">Section 1</section>
+  <section id="sec2" style="background: lightblue;">Section 2</section>
+  <section id="sec3" style="background: lightgreen;">Section 3</section>
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

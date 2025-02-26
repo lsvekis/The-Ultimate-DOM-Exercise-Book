@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag Resize Modal</title>
+  <style>
+    #modal {
+      position: fixed;
+      top: 20%;
+      left: 30%;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+    }
+    #resizeHandle {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 15px;
+      height: 15px;
+      background: #ccc;
+      cursor: se-resize;
+    }
+  </style>
+</head>
+<body>
+  <div id="modal">
+    <p>Drag the handle to resize me.</p>
+    <div id="resizeHandle"></div>
+  </div>
+  <script>
+    const modal = document.getElementById('modal');
+    const handle = document.getElementById('resizeHandle');
+    let isResizing = false;
+    handle.addEventListener('mousedown', (e) => {
+      isResizing = true;
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+      const newWidth = e.clientX - modal.offsetLeft;
+      const newHeight = e.clientY - modal.offsetTop;
+      modal.style.width = newWidth + 'px';
+      modal.style.height = newHeight + 'px';
+    });
+    document.addEventListener('mouseup', () => {
+      isResizing = false;
+    });
+  </script>
+</body>
+</html>

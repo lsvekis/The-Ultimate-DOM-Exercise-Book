@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Form Validation</title>
+  <style>
+    .error { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <form id="feedbackForm">
+    <label>Your Feedback:<br>
+      <textarea id="feedbackText" required rows="4" cols="40"></textarea>
+    </label>
+    <br>
+    <span class="error" id="feedbackError"></span>
+    <br>
+    <button type="submit">Submit Feedback</button>
+  </form>
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      const feedback = document.getElementById('feedbackText').value.trim();
+      const errorElem = document.getElementById('feedbackError');
+      if (!feedback) {
+        e.preventDefault();
+        errorElem.textContent = 'Feedback cannot be empty.';
+      } else {
+        errorElem.textContent = '';
+        alert('Feedback submitted!');
+      }
+    });
+  </script>
+</body>
+</html>

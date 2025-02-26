@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Follow Mouse Tooltip</title>
+  <style>
+    #tooltip {
+      position: absolute;
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: none;
+      font-size: 0.9em;
+    }
+    .hover-target { padding: 20px; border: 1px solid #ccc; display: inline-block; }
+  </style>
+</head>
+<body>
+  <div class="hover-target" id="hoverTarget">Hover over me!</div>
+  <div id="tooltip">Dynamic Tooltip</div>
+  <script>
+    const target = document.getElementById('hoverTarget');
+    const tooltip = document.getElementById('tooltip');
+    target.addEventListener('mousemove', (e) => {
+      tooltip.style.display = 'block';
+      tooltip.style.left = e.pageX + 10 + 'px';
+      tooltip.style.top = e.pageY + 10 + 'px';
+    });
+    target.addEventListener('mouseout', () => {
+      tooltip.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

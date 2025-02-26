@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Featured Products Slideshow</title>
+  <style>
+    #slideshow {
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+    }
+    #slideshow img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="slideshow">
+    <img id="slideImage" src="https://via.placeholder.com/300x200?text=Product+1" alt="Featured Product">
+  </div>
+  <script>
+    const images = [
+      'https://via.placeholder.com/300x200?text=Product+1',
+      'https://via.placeholder.com/300x200?text=Product+2',
+      'https://via.placeholder.com/300x200?text=Product+3'
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      document.getElementById('slideImage').src = images[index];
+    }, 3000);
+  </script>
+</body>
+</html>

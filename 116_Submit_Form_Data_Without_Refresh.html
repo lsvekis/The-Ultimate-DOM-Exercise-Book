@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX Form Submission</title>
+</head>
+<body>
+  <form id="ajaxForm">
+    <input type="text" name="username" placeholder="Username" required>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    document.getElementById('ajaxForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      // Simulate an AJAX call with setTimeout
+      setTimeout(() => {
+        document.getElementById('result').textContent = 'Form submitted successfully!';
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

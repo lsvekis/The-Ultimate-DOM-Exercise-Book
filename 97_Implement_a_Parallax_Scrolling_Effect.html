@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax Scrolling Effect</title>
+  <style>
+    body, html { margin: 0; padding: 0; }
+    .parallax {
+      background-image: url('https://via.placeholder.com/800x600');
+      min-height: 400px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .content {
+      height: 400px;
+      background: #f1f1f1;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax"></div>
+  <div class="content">
+    <h2>Scroll Down</h2>
+    <p>This is a content section.</p>
+  </div>
+  <div class="parallax"></div>
+  <div class="content">
+    <h2>Another Section</h2>
+  </div>
+</body>
+</html>

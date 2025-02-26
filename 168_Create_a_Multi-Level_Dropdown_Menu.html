@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Level Dropdown</title>
+  <style>
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      border: 1px solid #ccc;
+    }
+    .dropdown:hover > .dropdown-content { display: block; }
+    .dropdown-content a { padding: 8px 12px; display: block; text-decoration: none; color: black; }
+    .submenu { position: relative; }
+    .submenu .dropdown-content { left: 100%; top: 0; }
+  </style>
+</head>
+<body>
+  <div class="dropdown">
+    <button>Menu</button>
+    <div class="dropdown-content">
+      <a href="#">Option 1</a>
+      <div class="submenu">
+        <a href="#">Option 2</a>
+        <div class="dropdown-content">
+          <a href="#">Sub Option 1</a>
+          <a href="#">Sub Option 2</a>
+        </div>
+      </div>
+      <a href="#">Option 3</a>
+    </div>
+  </div>
+</body>
+</html>

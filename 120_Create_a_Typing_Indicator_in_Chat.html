@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Typing Indicator</title>
+  <style>
+    #chatContainer { border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; }
+    .message { margin: 5px 0; }
+    #typingIndicator { font-style: italic; color: gray; display: none; }
+  </style>
+</head>
+<body>
+  <div id="chatContainer"></div>
+  <div id="typingIndicator">User is typing...</div>
+  <input type="text" id="chatInput" placeholder="Type a message...">
+  <button id="sendBtn">Send</button>
+  <script>
+    const chatInput = document.getElementById('chatInput');
+    const typingIndicator = document.getElementById('typingIndicator');
+    chatInput.addEventListener('input', () => {
+      typingIndicator.style.display = chatInput.value ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

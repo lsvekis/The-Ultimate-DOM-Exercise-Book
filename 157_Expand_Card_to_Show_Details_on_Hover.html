@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expandable Hover Card</title>
+  <style>
+    .card-container { position: relative; width: 250px; overflow: hidden; border: 1px solid #ccc; transition: height 0.3s; height: 50px; }
+    .card-container:hover { height: 150px; }
+    .card-content { padding: 10px; }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card-content">
+      <p>Click for more info.</p>
+      <p style="display: none;">Additional details become visible on hover.</p>
+    </div>
+  </div>
+</body>
+</html>

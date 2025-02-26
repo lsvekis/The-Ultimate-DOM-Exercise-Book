@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Marquee Speed</title>
+  <style>
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      background: #f1f1f1;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+  <label>Marquee Speed: <input type="range" id="speedSlider" min="5" max="20" value="10"></label>
+  <div class="marquee">
+    <span id="marqueeText">This marquee speed is adjustable.</span>
+  </div>
+  <script>
+    const slider = document.getElementById('speedSlider');
+    const marqueeSpan = document.getElementById('marqueeText');
+    slider.addEventListener('input', function() {
+      marqueeSpan.style.animationDuration = this.value + 's';
+    });
+  </script>
+</body>
+</html>

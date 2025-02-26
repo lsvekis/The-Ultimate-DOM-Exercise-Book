@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reveal Sticky Footer</title>
+  <style>
+    body { margin: 0; min-height: 1500px; }
+    #footer {
+      position: fixed;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      transition: bottom 0.5s;
+    }
+    #footer.show { bottom: 0; }
+  </style>
+</head>
+<body>
+  <div id="footer">Sticky Footer Content</div>
+  <script>
+    window.addEventListener('scroll', () => {
+      const footer = document.getElementById('footer');
+      footer.classList.toggle('show', window.scrollY + window.innerHeight >= document.body.scrollHeight - 100);
+    });
+  </script>
+</body>
+</html>

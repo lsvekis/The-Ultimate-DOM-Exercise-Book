@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide-in Mobile Menu</title>
+  <style>
+    #mobileMenu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #333;
+      color: #fff;
+      transition: left 0.3s;
+      padding: 20px;
+    }
+    #mobileMenu.active { left: 0; }
+    #menuBtn { margin: 20px; padding: 10px 15px; }
+  </style>
+</head>
+<body>
+  <button id="menuBtn">Toggle Menu</button>
+  <div id="mobileMenu">
+    <p>Menu Item 1</p>
+    <p>Menu Item 2</p>
+    <p>Menu Item 3</p>
+  </div>
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

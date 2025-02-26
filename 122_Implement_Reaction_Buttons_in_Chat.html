@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Reaction Buttons</title>
+  <style>
+    .message { position: relative; margin: 10px; padding: 10px; border: 1px solid #ccc; }
+    .reaction { cursor: pointer; margin-left: 5px; }
+    .reactions { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div class="message" id="msg1">
+    This is a chat message.
+    <div class="reactions">
+      <span class="reaction">👍</span>
+      <span class="reaction">❤️</span>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.reaction').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert('Reaction: ' + this.textContent);
+      });
+    });
+  </script>
+</body>
+</html>

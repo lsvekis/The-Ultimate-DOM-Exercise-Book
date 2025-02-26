@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Scrollbar Color</title>
+  <style>
+    .scrollable {
+      width: 300px;
+      height: 200px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+    }
+    .scrollable::-webkit-scrollbar { width: 10px; }
+    .scrollable.default::-webkit-scrollbar-thumb { background: #888; }
+    .scrollable.red::-webkit-scrollbar-thumb { background: red; }
+  </style>
+</head>
+<body>
+  <button id="toggleColor">Toggle Scrollbar Color</button>
+  <div class="scrollable default" id="scrollBox">
+    <p>Scrollable content goes here.</p>
+    <p>Lorem ipsum dolor sit amet...</p>
+    <p>More content...</p>
+  </div>
+  <script>
+    document.getElementById('toggleColor').addEventListener('click', () => {
+      const box = document.getElementById('scrollBox');
+      box.classList.toggle('red');
+    });
+  </script>
+</body>
+</html>

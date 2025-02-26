@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sticky Blog Sidebar</title>
+  <style>
+    .container { display: flex; }
+    .content { flex: 3; padding: 20px; }
+    .sidebar {
+      flex: 1;
+      position: sticky;
+      top: 20px;
+      background: #f7f7f7;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>Blog Post</h1>
+      <p>Long content...</p>
+    </div>
+    <div class="sidebar">
+      <h3>Sidebar</h3>
+      <p>Related posts, tags, etc.</p>
+    </div>
+  </div>
+</body>
+</html>

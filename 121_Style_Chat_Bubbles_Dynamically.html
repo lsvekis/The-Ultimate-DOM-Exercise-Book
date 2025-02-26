@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styled Chat Bubbles</title>
+  <style>
+    #chatContainer {
+      border: 1px solid #ccc;
+      height: 300px;
+      overflow-y: scroll;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .message {
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 60%;
+    }
+    .sent { background: #dcf8c6; align-self: flex-end; }
+    .received { background: #fff; align-self: flex-start; }
+  </style>
+</head>
+<body>
+  <div id="chatContainer">
+    <div class="message sent">Hi there!</div>
+    <div class="message received">Hello!</div>
+  </div>
+</body>
+</html>

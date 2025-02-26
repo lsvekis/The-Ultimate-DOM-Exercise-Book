@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lazy Loading Images</title>
+  <style>
+    img { width: 300px; height: 200px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <img data-src="https://via.placeholder.com/300x200?text=Lazy1" class="lazy" alt="Lazy Image 1">
+  <img data-src="https://via.placeholder.com/300x200?text=Lazy2" class="lazy" alt="Lazy Image 2">
+  <img data-src="https://via.placeholder.com/300x200?text=Lazy3" class="lazy" alt="Lazy Image 3">
+  <script>
+    const lazyImages = document.querySelectorAll('.lazy');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.getAttribute('data-src');
+          observer.unobserve(img);
+        }
+      });
+    });
+    lazyImages.forEach(img => observer.observe(img));
+  </script>
+</body>
+</html>

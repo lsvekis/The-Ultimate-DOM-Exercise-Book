@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Like/Dislike Button</title>
+  <style>
+    button { padding: 10px; margin: 5px; }
+  </style>
+</head>
+<body>
+  <button id="likeBtn">Like (<span id="likeCount">0</span>)</button>
+  <button id="dislikeBtn">Dislike (<span id="dislikeCount">0</span>)</button>
+  <script>
+    let likes = 0, dislikes = 0;
+    document.getElementById('likeBtn').addEventListener('click', () => {
+      likes++;
+      document.getElementById('likeCount').textContent = likes;
+    });
+    document.getElementById('dislikeBtn').addEventListener('click', () => {
+      dislikes++;
+      document.getElementById('dislikeCount').textContent = dislikes;
+    });
+  </script>
+</body>
+</html>

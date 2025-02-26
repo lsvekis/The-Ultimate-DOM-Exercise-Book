@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notification Center</title>
+  <style>
+    .notification {
+      background: #e7f3fe;
+      border: 1px solid #b3d4fc;
+      padding: 10px;
+      margin: 5px 0;
+      position: relative;
+    }
+    .close-notif {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="notifCenter"></div>
+  <button id="addNotif">Add Notification</button>
+  <script>
+    let count = 1;
+    const center = document.getElementById('notifCenter');
+    document.getElementById('addNotif').addEventListener('click', () => {
+      const notif = document.createElement('div');
+      notif.className = 'notification';
+      notif.innerHTML = `Notification ${count} <span class="close-notif">x</span>`;
+      center.appendChild(notif);
+      count++;
+      notif.querySelector('.close-notif').addEventListener('click', () => {
+        notif.remove();
+      });
+    });
+  </script>
+</body>
+</html>

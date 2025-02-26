@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testimonial Slider</title>
+  <style>
+    #testimonialSlider {
+      width: 400px;
+      height: 150px;
+      margin: 20px auto;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="testimonialSlider">"Great service!" - Alice</div>
+  <script>
+    const testimonials = [
+      '"Great service!" - Alice',
+      '"Excellent quality!" - Bob',
+      '"Fast shipping!" - Charlie'
+    ];
+    let tIndex = 0;
+    setInterval(() => {
+      tIndex = (tIndex + 1) % testimonials.length;
+      document.getElementById('testimonialSlider').textContent = testimonials[tIndex];
+    }, 4000);
+  </script>
+</body>
+</html>

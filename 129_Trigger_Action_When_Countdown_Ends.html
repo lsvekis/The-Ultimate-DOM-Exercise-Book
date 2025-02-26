@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Action Trigger</title>
+</head>
+<body>
+  <h1 id="countdown">5 seconds remaining</h1>
+  <button id="specialBtn">Special Offer</button>
+  <script>
+    let seconds = 5;
+    const countdownElem = document.getElementById('countdown');
+    const btn = document.getElementById('specialBtn');
+    const interval = setInterval(() => {
+      seconds--;
+      countdownElem.textContent = `${seconds} seconds remaining`;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        countdownElem.textContent = 'Offer expired!';
+        btn.disabled = true;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

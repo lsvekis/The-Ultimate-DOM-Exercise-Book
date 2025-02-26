@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animate Like Button</title>
+  <style>
+    #likeBtn {
+      padding: 10px;
+      transition: transform 0.3s;
+    }
+    #likeBtn.animate { transform: scale(1.2); }
+  </style>
+</head>
+<body>
+  <button id="likeBtn">Like</button>
+  <script>
+    const btn = document.getElementById('likeBtn');
+    btn.addEventListener('click', () => {
+      btn.classList.add('animate');
+      setTimeout(() => btn.classList.remove('animate'), 300);
+    });
+  </script>
+</body>
+</html>

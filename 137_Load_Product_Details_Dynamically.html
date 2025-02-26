@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Product Details</title>
+  <style>
+    /* (Same modal styles as exercise 151) */
+    #productModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+    #modalContent { background: #fff; padding: 20px; border-radius: 5px; width: 300px; }
+    .product { cursor: pointer; padding: 10px; border: 1px solid #ccc; margin: 10px; }
+  </style>
+</head>
+<body>
+  <div class="product" data-id="1">Product 1</div>
+  <div class="product" data-id="2">Product 2</div>
+
+  <div id="productModal">
+    <div id="modalContent">
+      <p id="productDetails">Loading...</p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function fetchProductDetails(productId) {
+      // Simulate an API call with a Promise.
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(`Detailed info for product ID ${productId}`);
+        }, 500);
+      });
+    }
+
+    document.querySelectorAll('.product').forEach(product => {
+      product.addEventListener('click', function() {
+        const productId = this.getAttribute('data-id');
+        document.getElementById('productDetails').textContent = 'Loading...';
+        document.getElementById('productModal').style.display = 'flex';
+        fetchProductDetails(productId).then(details => {
+          document.getElementById('productDetails').textContent = details;
+        });
+      });
+    });
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('productModal').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

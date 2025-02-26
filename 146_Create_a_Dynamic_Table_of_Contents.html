@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Table of Contents</title>
+  <style>
+    #toc { background: #f4f4f4; padding: 10px; margin-bottom: 20px; }
+    #toc a { text-decoration: none; display: block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div id="toc"><h3>Table of Contents</h3></div>
+  <article>
+    <h2 id="header1">Introduction</h2>
+    <p>Content...</p>
+    <h2 id="header2">Main Topic</h2>
+    <p>Content...</p>
+    <h2 id="header3">Conclusion</h2>
+    <p>Content...</p>
+  </article>
+  <script>
+    const toc = document.getElementById('toc');
+    document.querySelectorAll('article h2').forEach(header => {
+      const link = document.createElement('a');
+      link.href = `#${header.id}`;
+      link.textContent = header.textContent;
+      toc.appendChild(link);
+    });
+  </script>
+</body>
+</html>

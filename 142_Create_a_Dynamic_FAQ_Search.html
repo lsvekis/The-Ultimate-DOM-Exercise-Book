@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic FAQ Search</title>
+  <style>
+    .faq-item { margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <input type="text" id="faqSearch" placeholder="Search FAQs...">
+  <div class="faq-item">How do I reset my password?</div>
+  <div class="faq-item">What is the return policy?</div>
+  <div class="faq-item">How do I track my order?</div>
+  <script>
+    document.getElementById('faqSearch').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(filter) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

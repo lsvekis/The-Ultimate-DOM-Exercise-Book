@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Step Form with Validation</title>
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <div class="step active" id="step1">
+      <label>Name: <input type="text" id="name" required></label>
+      <span class="error" id="error1"></span>
+      <button type="button" class="next">Next</button>
+    </div>
+    <div class="step" id="step2">
+      <label>Email: <input type="email" id="email" required></label>
+      <span class="error" id="error2"></span>
+      <button type="button" class="prev">Previous</button>
+      <button type="button" class="next">Next</button>
+    </div>
+    <div class="step" id="step3">
+      <label>Message: <textarea id="message" required></textarea></label>
+      <span class="error" id="error3"></span>
+      <button type="button" class="prev">Previous</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+  <script>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+    document.querySelectorAll('.next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const current = steps[currentStep];
+        const input = current.querySelector('input, textarea');
+        if (!input.value.trim()) {
+          current.querySelector('.error').textContent = 'This field is required';
+          return;
+        } else {
+          current.querySelector('.error').textContent = '';
+        }
+        current.classList.remove('active');
+        currentStep++;
+        steps[currentStep].classList.add('active');
+      });
+    });
+    document.querySelectorAll('.prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        steps[currentStep].classList.remove('active');
+        currentStep--;
+        steps[currentStep].classList.add('active');
+      });
+    });
+    document.getElementById('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Form submitted successfully!');
+    });
+  </script>
+</body>
+</html>
